@@ -1,0 +1,121 @@
+[tool.poetry]
+name = "sphinx-pdf-generate"
+
+# !! Don't miss updates in __init__.py, and changelog.rst!!!
+version = "0.0.1"
+
+description = "A Sphinx extension to generate individual PDF files for each documentation page."
+authors = ["Duodu Randy <duodurandy19@gmail.com>"]
+license = "MIT"
+maintainers = [
+    "Duodu Randy <duodurandy19@gmail.com>",
+]
+readme = "README.rst"
+repository = "https://github.com/iSOLveIT/sphinx-pdf-generate"
+documentation = "https://isolveit.github.io/sphinx-pdf-generate/"
+classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Topic :: Documentation :: Sphinx',
+        'Topic :: Software Development :: Build Tools',
+        'Framework :: Sphinx :: Extension',
+    ]
+
+packages = [
+    {include = "sphinx_pdf_generate"}
+]
+
+[tool.poetry.dependencies]
+python = ">=3.8.0,<4.0"
+sphinx = ">=5.0"
+colorama = ">=0.4.6"
+docutils = ">=0.15"
+pathlib = ">=1.0"
+weasyprint = ">=54.0"
+beautifulsoup4 = ">=4.6.3"
+jinja2 = ">=3.0.0"
+pypdf = ">=3.6.0"
+simple-file-checksum = ">=1.2.2"
+
+[tool.poetry.scripts]
+sphinx-pdf-generate = 'sphinx_pdf_generate.__main__:main'
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2"
+# test dependencies
+pytest = "^7"
+lxml = "^4.6.5"
+pytest-xdist="*"  # parallelisation
+myst-parser="^0.18.0"
+
+# type checking
+mypy = "^0.991"
+types-requests = "^2.27.25"
+types-setuptools = "^65.6.0.2"
+docutils-stubs = "^0.0.22"
+
+sphinx-material = { version = ">=0.0.35", optional = true }
+
+# formatting dependencies
+black = "^22.3"
+isort = "^5.7.0"
+
+# pyparsing 3.0.5 does not work with current "packaging" lib
+pyparsing = "^3.0.9"  # 3.0.5 error: https://github.com/pyparsing/pyparsing/issues/329
+
+[tool.pytest.ini_options]
+asyncio_mode= "auto"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+
+[tool.mypy]
+strict = true
+show_error_codes = true
+implicit_reexport = true
+files = "sphinx_pdf_generate"
+ignore_missing_imports = true
+namespace_packages = true
+warn_unused_ignores = false
+
+[[tool.mypy.overrides]]
+module = [
+    'sphinx_pdf_generate.build',
+    'sphinx_pdf_generate.cli',
+    'sphinx_pdf_generate.cover',
+    'sphinx_pdf_generate.generate_txt',
+    'sphinx_pdf_generate.logging',
+    'sphinx_pdf_generate.options',
+    'sphinx_pdf_generate.pdf_generate',
+    'sphinx_pdf_generate.preprocessor.content.tabbed_block',
+    'sphinx_pdf_generate.preprocessor.links.util',
+    'sphinx_pdf_generate.preprocessor.prep',
+    'sphinx_pdf_generate.renderer',
+    'sphinx_pdf_generate.templates.filters.datetime',
+    'sphinx_pdf_generate.templates.filters.url',
+    'sphinx_pdf_generate.templates.template',
+    'sphinx_pdf_generate.toc',
+    'sphinx_pdf_generate.utils',
+    'sphinx_pdf_generate.version'
+
+]
+ignore_errors = true
+
+[tool.poetry.extras]
+docs = ["sphinx"]
+immaterial = ["sphinx-immaterial"]
+
+[build-system]
+requires = ["setuptools", "poetry_core>=1.0.8"]  # setuptools
+build-backend = "poetry.core.masonry.api"

@@ -230,10 +230,3 @@ h2 {
     string-set: chapter content();
 }
 
-
-/* PDF download icon */
-a.pdf-icon {
-    background-image: url("./img/pdf-icon.svg");
-    float: right;
-}
-

@@ -31,8 +31,11 @@ Requirements
     - |weasyprint-linux|_
     - |weasyprint-macos|_
     - |weasyprint-windows|_
-4. Explicit support for your Sphinx theme is probably required. As of now, the only supported theme is |sphinx-immaterial|_.
+4. Explicit support for your Sphinx theme is probably required using custom CSS. As of now, the only supported theme is |sphinx-immaterial|_.
    A generic version will just generate the PDF files and put the download link into a ``<link>`` tag.
+
+
+:pagebreak:`True`
 
 Installation
 ------------
@@ -113,7 +116,6 @@ Their projects inspired the creation of this plugin. We've used some of their co
 
 .. toctree::
    :maxdepth: 2
-   :hidden:
 
    contribute
    test/index

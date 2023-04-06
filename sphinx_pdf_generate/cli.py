@@ -145,8 +145,8 @@ def main():
         )
 
     if builder == 0:
-        pdf_generator = PdfGeneratePlugin()
         global_config.update(outdir=outdir, srcdir=srcdir)
+        pdf_generator = PdfGeneratePlugin()
         pdf_generator.on_config(global_config)
 
         for html_pagename, html_metadata in local_config.items():

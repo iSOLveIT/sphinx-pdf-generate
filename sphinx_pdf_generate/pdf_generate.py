@@ -1,12 +1,12 @@
 import json
 import logging
-import os
 from pathlib import Path
 from timeit import default_timer as timer
 from typing import Any, Dict, List
 
 from sphinx.application import Sphinx
 from sphinx.util import docutils
+from docutils import nodes
 
 from sphinx_pdf_generate import generate_txt
 from sphinx_pdf_generate.version import __version__
@@ -41,6 +41,10 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value("pdfgen_toc_level", 4, "html", types=[int])
     app.add_config_value("pdfgen_cover_images", None, "html", types=[dict])
 
+    ######################################################################
+    # ROLES
+    ######################################################################
+    app.add_role('pagebreak', page_break_role)
     ########################################################################
     # EVENTS
     ########################################################################
@@ -68,6 +72,11 @@ def generate_sources_to_convert(
 ):
     project_metadata: Dict[str, str] = app.env.metadata.get(pagename)  # Get metadata of a page
     app.env.sphinx_pdfgen_data.update([(pagename, project_metadata)])
+
+
+def page_break_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+    """Sphinx role to insert a page break in the HTML output."""
+    return [nodes.raw('', '<p class="page-break"></p>', format='html')], []
 
 
 def build_finished(app: Sphinx, exception: Exception):

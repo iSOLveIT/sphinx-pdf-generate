@@ -5,21 +5,6 @@ from bs4 import BeautifulSoup
 from .content import restructure_tabbed_content
 from .links import rel_html_href, replace_asset_hrefs
 
-# def get_combined(soup: BeautifulSoup, base_url: str, rel_url: str):
-#     for id in soup.find_all(id=True):
-#         id['id'] = transform_id(id['id'], rel_url)
-#
-#     for a in soup.find_all('a', href=True):
-#         if urls.url_is_absolute(a['href']) or os.path.isabs(a['href']):
-#             continue
-#
-#         a['href'] = transform_href(a['href'], rel_url)
-#
-#     soup.body['id'] = get_body_id(rel_url)
-#     soup = replace_asset_hrefs(soup, base_url)
-#     soup = restructure_tabbed_content(soup)
-#     return soup
-
 
 def get_separate(soup: BeautifulSoup, base_url: str, site_url: str, outdir: str):
     """

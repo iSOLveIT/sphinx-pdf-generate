@@ -4,6 +4,9 @@
         @top-left {
             content: normal ;
         }
+        @top-right {
+            content: normal ;
+        }
     }
 
     article#doc-toc{

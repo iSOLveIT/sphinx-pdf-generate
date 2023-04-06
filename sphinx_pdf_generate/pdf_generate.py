@@ -108,8 +108,6 @@ def build_finished(app: Sphinx, exception: Exception):
     pdf_metadata = dict(GLOBAL_OPTIONS=global_options, LOCAL_OPTIONS=local_options)
 
     path_to_save_metadata = Path(app.outdir).joinpath("pdf_metadata.json")
-    # if app.tags.has("LOCAL_METADATA_SET"):
-    #     path_to_save_metadata = Path(app.outdir).joinpath("global_pdf_metadata.json")
     with open(path_to_save_metadata, "w") as json_file:
         json.dump(pdf_metadata, json_file, indent=4)
 

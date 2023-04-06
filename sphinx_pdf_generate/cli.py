@@ -67,15 +67,7 @@ def get_parser():
     parser = argparse.ArgumentParser(
         formatter_class=RawTextArgumentDefaultsHelpFormatter, description="Build PDF files for Sphinx source files."
     )
-    parser.add_argument(
-        "--metadata",
-        metavar="PATH",
-        dest="metadata",
-        help="path where the PDF metadata file (e.g. pdf_metadata.json) is located (default: "
-        "outdir/pdf_metadata.json). "
-        "This file contains specific options for each RST document, which we will generate a PDF for.",
-        default=argparse.SUPPRESS
-    )
+
     parser.add_argument("--version", action="version", version="sphinx-pdf-generate {}".format(__version__))
 
     sphinx_arguments = ", ".join(f"-{arg}" if meta is None else f"-{arg}={meta}" for arg, meta in SPHINX_BUILD_OPTIONS)
@@ -124,27 +116,26 @@ def main():
     build_args = _get_build_args(args)
     builder = get_builder(build_args)
 
-    metadata_options_file = Path(outdir).joinpath("pdf_metadata.json")
-    if getattr(args, "metadata", None):
-        if os.path.exists(os.path.realpath(args.metadata)):
-            # build_args.extend(["-t", "LOCAL_METADATA_SET"])
-            metadata_options_file = os.path.realpath(args.metadata)
+    if builder == 0:
+        # Load configuration
+        metadata_options_file = Path(outdir).joinpath("pdf_metadata.json")
+        if not os.path.exists(metadata_options_file):
+            raise PDFGenerateException(
+                f"The The PDF metadata file, 'pdf_metadata.json', not found in the output directory. Check: {outdir}"
+            )
 
-    # Load configuration
-    if os.path.exists(metadata_options_file):
         with open(metadata_options_file, "r") as json_file:
             load_options: Dict[str, Dict] = json.load(json_file)
 
-    global_config = load_options["GLOBAL_OPTIONS"] if "GLOBAL_OPTIONS" in load_options else GLOBAL_OPTIONS
-    local_config = load_options.get("LOCAL_OPTIONS")
+        global_config = load_options["GLOBAL_OPTIONS"] if "GLOBAL_OPTIONS" in load_options else GLOBAL_OPTIONS
+        local_config = load_options.get("LOCAL_OPTIONS")
 
-    if not local_config:
-        raise PDFGenerateException(
-            f"The PDF metadata file does not contain information about the local options. "
-            f"Check the file for more information: {metadata_options_file}."
-        )
+        if not local_config:
+            raise PDFGenerateException(
+                f"The PDF metadata file does not contain information about the local options. "
+                f"Check the file for more information: {metadata_options_file}."
+            )
 
-    if builder == 0:
         global_config.update(outdir=outdir, srcdir=srcdir)
         pdf_generator = PdfGeneratePlugin()
         pdf_generator.on_config(global_config)
@@ -165,7 +156,7 @@ def main():
         if pdf_generator.num_errors > 0:
             log.error("{} conversion errors occurred (see above)".format(pdf_generator.num_errors))
     else:
-        show(context="Sphinx build was unsuccessful")
+        show(context="Sphinx build was unsuccessful. No PDF files were generated.")
 
 
 class PDFGenerateException(Exception):

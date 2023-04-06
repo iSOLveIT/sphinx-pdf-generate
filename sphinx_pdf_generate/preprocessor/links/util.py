@@ -24,17 +24,6 @@ def is_doc(href: str):
     return True
 
 
-# def rel_pdf_href(href: str):
-#     head, tail = os.path.split(href)
-#     filename, _ = os.path.splitext(tail)
-#
-#     internal = href.startswith("#")
-#     if not is_doc(href) or internal:
-#         return href
-#
-#     return urls.iri_to_uri(os.path.join(head, filename + ".pdf"))
-
-
 def rel_html_href(base_url: str, href: str, site_url: str, outdir: str):
     new_base_url = os.path.dirname(base_url)
     rel_url = new_base_url.replace("file://", "")

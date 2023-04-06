@@ -1,7 +1,7 @@
 :pdf-title: Home page
 :pdf-filename: Index Document
 :pdf-revision: 1.10
-:pdf-toc_txt: false
+:pdf-toc_txt: true
 
 .. Sphinx-Pdf-Generate documentation master file, created by
    sphinx-quickstart on Thu Mar 23 05:16:16 2023.
@@ -33,7 +33,6 @@ Requirements
     - |weasyprint-windows|_
 4. Explicit support for your Sphinx theme is probably required using custom CSS. As of now, the only supported theme is |sphinx-immaterial|_.
    A generic version will just generate the PDF files and put the download link into a ``<link>`` tag.
-
 
 :pagebreak:`True`
 

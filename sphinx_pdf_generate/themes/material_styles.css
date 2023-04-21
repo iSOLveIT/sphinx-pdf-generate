@@ -1,0 +1,89 @@
+
+/*==============DEFAULT STYLE CSS=============*/
+
+body {
+    background: none;
+    background-color: #fff;
+    font-family: var(--md-text-font), sans-serif;
+    font-size: 12pt;
+  }
+
+a.md-content__button.md-icon{
+    display: none;
+}
+
+/* Tabbed-Content */
+div.tabbed-content {
+  display: none;
+}
+div.tabbed-labels {
+    display: block !important;
+}
+div.new_tabbed_block {
+  display: block;
+}
+
+table {
+    max-width: 100%;
+}
+
+div.md-typeset__table table{
+    border-radius: .1rem;
+    display: table;
+    font-size: .64rem;
+    max-width: 100%;
+    overflow: auto;
+    border-collapse: initial;
+    border-spacing: 0;
+}
+
+.md-typeset table:not([class]) {
+    font-size: 14px;
+    line-height: 1.5;
+}
+.md-typeset .tabbed-set{
+    display: block;
+}
+.md-typeset .tabbed-set .tabbed-content--wrap {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+.md-typeset .tabbed-set .tabbed-content--wrap input{
+    display: none;
+}
+.md-typeset .tabbed-set .tabbed-content--wrap label{
+    background-color: #aaa;
+    padding: 0.2rem 2rem;
+    margin: 0;
+    font-weight: 600;
+    color: #666;
+    border-radius: 3px 3px 0 0;
+    border-bottom-color: transparent;
+}
+.md-typeset .tabbed-set .tabbed-content--wrap .tabbed-content{
+    display: block;
+    box-shadow: none;
+}
+div[data-md-component="sidebar"],
+div[id="custom-banner"],
+div[data-md-component="skip"],
+div[data-md-component="announce"],
+div[data-md-component="header"],
+header[data-md-component="header"],
+label[class="md-overlay"] {
+    display: none;
+}
+
+h2 {
+    string-set: chapter content();
+}
+
+.md-typeset .headerlink, .md-banner, .md-clipboard, .md-content__button,
+.md-dialog, .md-footer, .md-header, .md-sidebar {
+    display: none
+}
+
+.md-typeset a:after{;
+    content:none
+}

@@ -3,10 +3,10 @@ from pathlib import Path
 
 
 def get_stylesheet() -> str:
-    style_path = Path(__file__).parent.joinpath("immaterial_styles.css")
+    style_path = Path(__file__).parent.joinpath("material_styles.css")
     style_content = style_path.read_text(encoding='utf-8')
     return """ {}
-    
+
 .md-container {{
     display: block;
     padding-top: 0;
@@ -71,7 +71,7 @@ def modify_html(html: str, href: str) -> str:
     <path style="fill:#FFFFFF;" d="M36.266,44.168v3.172h4.211v1.121h-4.211V53h-1.668V42.924H40.9v1.244H36.266z"/> 
     </g></g> </svg>"""
 
-    a_tag = '<a class="md-content__button md-icon" style="margin:0;" ' \
+    a_tag = '<a class="md-content__button md-icon" style="margin:0;float:right;" ' \
             'href="{}" download title="Download PDF">{}</a>'.format(href, svg_tag)
 
     # insert into HTML

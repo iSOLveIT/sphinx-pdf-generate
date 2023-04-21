@@ -22,7 +22,7 @@ version = __version__
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "sphinx_immaterial",
+    "sphinx_material",
     "sphinx_pdf_generate",
 ]
 
@@ -32,10 +32,29 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "research.md"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "sphinx_immaterial"
-# html_sidebars = {
-#     "**": ["logo-text.html", "globaltoc.html", "localtoc.html", "searchbox.html"]
-# }
+html_theme = "sphinx_material"
+
+html_title = "Home"
+# Material theme options (see theme.conf for more information)
+html_theme_options = {
+    # Set the name of the project to appear in the navigation.
+    "nav_title": "Home",
+    # Specify a base_url used to generate sitemap.xml. If not
+    # specified, then no sitemap will be built.
+    "base_url": "https://docs.chipsee.com",
+    # Set the color and the accent color
+    "color_primary": "deep-orange",
+    "color_accent": "deep-orange",
+    # Visible levels of the global TOC; -1 means unlimited
+    "globaltoc_depth": 4,
+    # If False, expand all TOC entries
+    "globaltoc_collapse": True,
+    # If True, show hidden TOC entries
+    "globaltoc_includehidden": True,
+    # 'html_minify': True,
+    "css_minify": True,
+}
+html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 html_static_path = ["_static"]
 
 rst_epilog = """
@@ -55,6 +74,10 @@ rst_epilog = """
 .. _weasyprint-windows: https://weasyprint.readthedocs.io/en/latest/install.html#windows
 
 .. |weasyprint-windows| replace:: Windows
+
+.. _sphinx-material: https://github.com/bashtage/sphinx-material/
+
+.. |sphinx-material| replace:: Sphinx-Material
 
 .. _sphinx-immaterial: https://github.com/jbms/sphinx-immaterial/
 

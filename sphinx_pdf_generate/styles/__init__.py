@@ -52,7 +52,7 @@ def style_for_print(options: Options, pdf_metadata: Dict = None) -> list[Tag]:
     )
     css_tag = Tag(name="style", attrs={"class": "plugin-default-css"})
     css_tag.append(css_string)
-    css_files = ["_styles.css", "_paging.css"]
+    css_files = ["_paging.css"]
 
     if options.toc:
         css_files.append("toc.css")

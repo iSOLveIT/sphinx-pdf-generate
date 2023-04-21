@@ -208,15 +208,7 @@ class PdfGeneratePlugin:
                     dest_path.joinpath(pdf_file),
                     pdf_metadata=pdf_meta,
                 )
-                generate_txt_document = pdf_meta.get("toc_txt")
-                if generate_txt_document and (self._options.toc and self._options.toc_ordering):
-                    self._logger.info(f"Generating TXT TOC: {file_name}.txt, from {file_name}.pdf table of contents")
-                    extra_data = dict(isCover=self._options.cover, tocTitle=self._options.toc_title)
-                    # Generate TOC_TXT file
-                    generate_txt.pdf_txt_toc(dest_path, file_name, extra_data)
-                    self.txt_num_files += 1
-                if not self._options.toc or not self._options.toc_ordering:
-                    self._logger.info("Set both `toc` and `toc_numbering` to `true` to generate TXT table of contents.")
+
                 html_content = self.renderer.add_link(html_content, pdf_file)
                 self.pdf_num_files += 1
             except Exception as e:

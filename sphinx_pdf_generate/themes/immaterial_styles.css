@@ -230,3 +230,7 @@ h2 {
     string-set: chapter content();
 }
 
+.md-typeset .headerlink {
+    display: none
+}
+

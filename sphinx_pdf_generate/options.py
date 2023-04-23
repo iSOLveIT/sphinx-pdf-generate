@@ -2,21 +2,19 @@ import logging
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from sphinx.application import Sphinx
-
 from .templates.filters.url import URLFilter
 from .templates.template import Template
 
 
-class Options(object):
+class Options:
     def __init__(self, config: Dict[str, Any], logger: logging):
         self.verbose: bool = config["verbose"]
         self.debug: bool = config["debug"]
         self.debug_target: Optional[str] = config["debug_target"]
         self.srdir: Path = Path(config["srcdir"])
         self.outdir: Path = Path(config["outdir"])
-        self._src_path: Path = None
-        self._dest_path: Path = None
+        self._src_path: Optional[Path] = None
+        self._dest_path: Optional[Path] = None
 
         self.site_url: str = config["site_url"]
         self.theme_name: str = config["theme_name"]

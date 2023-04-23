@@ -6,7 +6,7 @@ def get_stylesheet() -> Optional[str]:
 
 
 def modify_html(html: str, href: str) -> str:
-    a_tag = '<a class="pdf-icon" href="{}" download title="Download PDF"></a>'.format(href)
+    a_tag = f'<a class="pdf-icon" href="{href}" download title="Download PDF"></a>'
 
     # insert into HTML
     insert_point = '<div class="document">'

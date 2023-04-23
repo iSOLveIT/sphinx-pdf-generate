@@ -1,14 +1,14 @@
 import html
 import re
 from pathlib import Path
-from typing import Dict
+from typing import Any, Dict, Optional
 
 from bs4 import Tag
 
 from ..options import Options
 
 
-def _css_escape(text: str) -> str:
+def _css_escape(text: Optional[str]) -> str:
     """@see https://developer.mozilla.org/en-US/docs/Web/CSS/string"""
 
     if not text:
@@ -22,8 +22,9 @@ def _css_escape(text: str) -> str:
     return text.replace("'", "\\27")
 
 
-def style_for_print(options: Options, pdf_metadata: Dict = None) -> list[Tag]:
+def style_for_print(options: Options, pdf_metadata: Optional[Dict[str, Any]] = None) -> list[Tag]:
     base_path = Path(Path(__file__).parent).resolve()
+    pdf_metadata = {} if pdf_metadata is None else pdf_metadata
 
     css_string = """
     :root {{
@@ -73,7 +74,7 @@ def style_for_print(options: Options, pdf_metadata: Dict = None) -> list[Tag]:
     for css_file in css_files:
         filename = base_path.joinpath(css_file) if css_file != "custom.css" else custom_css_path.joinpath(css_file)
         if filename.is_file():
-            with open(filename, "r", encoding="UTF-8") as f:
+            with open(filename, encoding="UTF-8") as f:
                 css_rules = f.read()
                 if css_file in ["_styles.css", "_paging.css"]:
                     css_tag.append(css_rules)

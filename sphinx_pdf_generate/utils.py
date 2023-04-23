@@ -15,7 +15,7 @@ PDF_LOCAL_OPTIONS: List[Tuple[str, Union[bool, str, None]]] = [
 ]
 
 
-def get_pdf_metadata(pdf_metadata: Dict[str, str]={}) -> Dict[str, Any]:
+def get_pdf_metadata(pdf_metadata: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     """
     Function for parsing RST file metadata. The metadata includes the ff.:
 
@@ -27,20 +27,21 @@ def get_pdf_metadata(pdf_metadata: Dict[str, str]={}) -> Dict[str, Any]:
     - pdf-revision: default to None
     - pdf-toc_txt: default to False
 
-    :param metadata: A dictionary object containing the metadata of a page.
+    :param pdf_metadata: A dictionary object containing the metadata of a page.
     :return: Dictionary object containing parsed metadata.
     """
 
-    pdf_meta = {}
+    pdf_metadata = {} if pdf_metadata is None else pdf_metadata
+    pdf_meta: Dict[str, Any] = {}
 
     for option, default_value in PDF_LOCAL_OPTIONS:
         option_value = default_value
         if option in pdf_metadata:
             option_value = pdf_metadata.get(option)
             if option == "pdf-build":
-                option_value = False if option_value.lower() == "false" else True
+                option_value = option_value.lower() != "false"
             elif option == "pdf-toc_txt":
-                option_value = True if option_value.lower() == "true" else False
+                option_value = option_value.lower() == "true"
             elif option == "pdf-subtitle":
                 option_value = [item.strip() for item in option_value.split("|")]
 

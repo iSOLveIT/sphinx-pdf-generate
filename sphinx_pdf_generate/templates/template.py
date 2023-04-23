@@ -4,13 +4,12 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import jinja2
-from sphinx.application import Sphinx
 
 from .filters.datetime import strftime, strptime
 from .filters.url import URLFilter
 
 
-class Template(object):
+class Template:
 
     """Pickups key-value from `mkdocs.yml`"""
 

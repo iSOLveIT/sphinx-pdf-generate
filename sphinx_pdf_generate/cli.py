@@ -8,12 +8,12 @@ from typing import Dict
 
 import colorama
 
-from .version import __version__
 from .build import SPHINX_BUILD_OPTIONS, get_builder, show
 from .logging import get_logger
 from .pdf_generate import PdfGeneratePlugin
+from .version import __version__
 
-GLOBAL_OPTIONS = dict(
+GLOBAL_OPTIONS = {}.update(
     verbose=False,
     site_url="http://127.0.0.1:8000",
     debug=False,
@@ -68,7 +68,7 @@ def get_parser():
         formatter_class=RawTextArgumentDefaultsHelpFormatter, description="Build PDF files for Sphinx source files."
     )
 
-    parser.add_argument("--version", action="version", version="sphinx-pdf-generate {}".format(__version__))
+    parser.add_argument("--version", action="version", version=f"sphinx-pdf-generate {__version__}")
 
     sphinx_arguments = ", ".join(f"-{arg}" if meta is None else f"-{arg}={meta}" for arg, meta in SPHINX_BUILD_OPTIONS)
     sphinx_parser = parser.add_argument_group(
@@ -95,7 +95,7 @@ def get_parser():
     return parser
 
 
-def main():
+def main() -> None:
     """Actual application logic."""
     colorama.init()
     log = get_logger("sphinx-pdf-generate")
@@ -124,7 +124,7 @@ def main():
                 f"The The PDF metadata file, 'pdf_metadata.json', not found in the output directory. Check: {outdir}"
             )
 
-        with open(metadata_options_file, "r") as json_file:
+        with open(metadata_options_file) as json_file:
             load_options: Dict[str, Dict] = json.load(json_file)
 
         global_config = load_options["GLOBAL_OPTIONS"] if "GLOBAL_OPTIONS" in load_options else GLOBAL_OPTIONS
@@ -148,13 +148,11 @@ def main():
             )
             html_page_path.write_text(data=new_html_page_content, encoding="utf-8")
 
-        log.info(
-            "Converting {} file(s) to PDF took {:.1f}s".format(pdf_generator.pdf_num_files, pdf_generator.total_time)
-        )
-        log.info("Converted {} PDF document's TOC to TXT".format(pdf_generator.txt_num_files))
+        log.info(f"Converting {pdf_generator.pdf_num_files} file(s) to PDF took {pdf_generator.total_time:.1f}s")
+        log.info(f"Converted {pdf_generator.txt_num_files} PDF document's TOC to TXT")
 
         if pdf_generator.num_errors > 0:
-            log.error("{} conversion errors occurred (see above)".format(pdf_generator.num_errors))
+            log.error(f"{pdf_generator.num_errors} conversion errors occurred (see above)")
     else:
         show(context="Sphinx build was unsuccessful. No PDF files were generated.")
 

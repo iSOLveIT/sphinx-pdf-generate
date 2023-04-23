@@ -42,19 +42,19 @@ def get_content(soup: BeautifulSoup) -> BeautifulSoup:
     for img in all_images:
         # Modify <img> tags
         position = img["align"]
-        img["style"] = "float:{};".format(position)
+        img["style"] = f"float:{position};"
         del img["align"]
     # Check table alignment
     all_table_th = soup.find_all("th", attrs={"align": re.compile(r"left|right|center")})
     for th in all_table_th:
         # Modify <th> tags
         position = th["align"]
-        th["style"] = "text-align:{};".format(position)
+        th["style"] = f"text-align:{position};"
         del th["align"]
     all_table_td = soup.find_all("td", attrs={"align": re.compile(r"left|right|center")})
     for td in all_table_td:
         # Modify <td> tags
         position = td["align"]
-        td["style"] = "text-align:{};".format(position)
+        td["style"] = f"text-align:{position};"
         del td["align"]
     return soup

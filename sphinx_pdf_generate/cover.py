@@ -2,7 +2,6 @@ import re
 from typing import Any, Dict, Optional
 
 from bs4 import BeautifulSoup, PageElement, Tag
-from sphinx.application import Sphinx
 
 from .options import Options
 from .templates.filters.url import URLFilter
@@ -55,11 +54,6 @@ def _make_cover(soup: PageElement, options: Options, config: Dict[str, Any], pdf
 
         cover_template = str(template.render(keywords))
         cover_html = str_to_bs4(cover_template)
-
-        # Remove h1 content
-        # h1_title = soup.find("h1", attrs={"id": re.compile(r"[\w_\-]+")})
-        # if h1_title is not None:
-        #     h1_title.decompose()
 
         soup.body.insert(0, cover_html)
     except Exception as e:

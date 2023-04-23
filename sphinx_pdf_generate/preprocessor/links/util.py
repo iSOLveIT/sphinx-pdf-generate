@@ -1,6 +1,6 @@
 import os
 import re
-from pathlib import Path, PosixPath, WindowsPath
+from pathlib import Path
 
 from bs4 import BeautifulSoup
 from weasyprint import urls
@@ -37,12 +37,6 @@ def rel_html_href(base_url: str, href: str, site_url: str, outdir: str):
 
     abs_html_href = Path(rel_url).joinpath(href).resolve()
     abs_html_href = replace_build_dir.sub(site_url.rstrip("/"), str(abs_html_href))
-    # elif isinstance(abs_html_href, WindowsPath):
-    #     abs_html_href = re.sub(
-    #         r"^[\w\-:\\]+\\+(temp|Temp)\\+pages[\w\-]+|^[\w\-.~$&+,/:;=?@%#* \\]+[/\\]site",
-    #         site_url.rstrip("/"),
-    #         str(abs_html_href),
-    #     )
     abs_html_href = abs_html_href.replace("\\", "/")
 
     if abs_html_href:

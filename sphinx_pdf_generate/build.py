@@ -63,4 +63,3 @@ def get_builder(sphinx_args: List[str]):
             return e.returncode
 
     return build()
-

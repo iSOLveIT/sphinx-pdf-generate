@@ -2,12 +2,10 @@ import logging
 import re
 import sys
 from importlib import import_module
-from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 from typing import Any, Dict, Optional
 
 from bs4 import BeautifulSoup, Tag
-from sphinx.application import Sphinx
 from weasyprint import HTML
 
 from . import cover, toc
@@ -19,7 +17,7 @@ from .templates.filters.url import URLFilter
 from .themes import generic as generic_theme
 
 
-class Renderer(object):
+class Renderer:
     def __init__(self, options: Options, config: Dict[str, Any]):
         self._options = options
         self._config = config
@@ -116,5 +114,5 @@ class Renderer(object):
         try:
             return import_module(module_name, "sphinx_pdf_generate.themes")
         except ImportError as e:
-            self.logger.error("Could not load theme handler {}: {}".format(theme, e), file=sys.stderr)
+            self.logger.error(f"Could not load theme handler {theme}: {e}", file=sys.stderr)
             return generic_theme

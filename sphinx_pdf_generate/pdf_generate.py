@@ -2,19 +2,18 @@ import json
 import logging
 from pathlib import Path
 from timeit import default_timer as timer
-from typing import Any, Dict, List
+from typing import Any, Dict
 
+from docutils import nodes
 from sphinx.application import Sphinx
 from sphinx.util import docutils
-from docutils import nodes
 
-from sphinx_pdf_generate import generate_txt
-from sphinx_pdf_generate.version import __version__
 from sphinx_pdf_generate.logging import get_logger
 from sphinx_pdf_generate.options import Options
 from sphinx_pdf_generate.renderer import Renderer
 from sphinx_pdf_generate.templates.filters.url import URLFilter
 from sphinx_pdf_generate.utils import get_pdf_metadata, h1_title_tag, secure_filename
+from sphinx_pdf_generate.version import __version__
 
 
 def setup(app: Sphinx) -> Dict[str, Any]:
@@ -44,7 +43,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     ######################################################################
     # ROLES
     ######################################################################
-    app.add_role('pagebreak', page_break_role)
+    app.add_role("pagebreak", page_break_role)
     ########################################################################
     # EVENTS
     ########################################################################
@@ -74,9 +73,9 @@ def generate_sources_to_convert(
     app.env.sphinx_pdfgen_data.update([(pagename, project_metadata)])
 
 
-def page_break_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
+def page_break_role(name, rawtext, text, lineno, inliner, options={}, content=[]):  # noqa B006
     """Sphinx role to insert a page break in the HTML output."""
-    return [nodes.raw('', '<p class="page-break"></p>', format='html')], []
+    return [nodes.raw("", '<p class="page-break"></p>', format="html")], []
 
 
 def build_finished(app: Sphinx, exception: Exception):
@@ -105,7 +104,7 @@ def build_finished(app: Sphinx, exception: Exception):
     )
 
     local_options = app.env.sphinx_pdfgen_data
-    pdf_metadata = dict(GLOBAL_OPTIONS=global_options, LOCAL_OPTIONS=local_options)
+    pdf_metadata = {"GLOBAL_OPTIONS": global_options, "LOCAL_OPTIONS": local_options}
 
     path_to_save_metadata = Path(app.outdir).joinpath("pdf_metadata.json")
     with open(path_to_save_metadata, "w") as json_file:
@@ -182,12 +181,7 @@ class PdfGeneratePlugin:
         if build_pdf_document and Path(self._config["srcdir"]).joinpath(src_path).exists():
             self._options.body_title = h1_title_tag(html_content, pdf_meta.get("title"))
 
-            file_name = (
-                pdf_meta.get("filename")
-                or pdf_meta.get("title")
-                or self._options.body_title
-                or None
-            )
+            file_name = pdf_meta.get("filename") or pdf_meta.get("title") or self._options.body_title or None
             if file_name is None:
                 file_name = str(pagename).split("/")[-1]
                 self._logger.error(
@@ -201,7 +195,7 @@ class PdfGeneratePlugin:
             pdf_file = file_name + ".pdf"
 
             try:
-                self._logger.info("Converting {} to {}".format(src_path, pdf_file))
+                self._logger.info(f"Converting {src_path} to {pdf_file}")
                 self.renderer.write_pdf(
                     html_content,
                     base_url,
@@ -213,9 +207,9 @@ class PdfGeneratePlugin:
                 self.pdf_num_files += 1
             except Exception as e:
                 self.num_errors += 1
-                raise PDFGenerateException("Error converting {}. Reason: {}".format(src_path, e))
+                raise PDFGenerateException(f"Error converting {src_path}. Reason: {e}")
         else:
-            self._logger.info("Skipped: PDF conversion for {}".format(src_path))
+            self._logger.info(f"Skipped: PDF conversion for {src_path}")
 
         end = timer()
         self.total_time += end - start

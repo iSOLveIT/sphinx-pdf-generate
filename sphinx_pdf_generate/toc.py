@@ -1,9 +1,9 @@
-from bs4 import NavigableString, PageElement, Tag
+from bs4 import NavigableString, Tag
 
 from .options import Options
 
 
-def make_toc(soup: PageElement, options: Options):
+def make_toc(soup: Tag, options: Options):
     """Generate a toc tree.
 
     Arguments:
@@ -15,7 +15,7 @@ def make_toc(soup: PageElement, options: Options):
         _make_indexes(soup, options)
 
 
-def _make_indexes(soup: PageElement, options: Options) -> None:
+def _make_indexes(soup: Tag, options: Options) -> None:
     """Generate ordered chapter number and TOC of document.
 
     Arguments:
@@ -38,24 +38,24 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
     h2ul = h2li = h3ul = h3li = h4ul = h4li = h5ul = h5li = h6ul = None
     # exclude_lv2 = exclude_lv3 = False
 
-    def makeLink(h: Tag) -> Tag:
+    def makelink(heading: Tag) -> Tag:
         li = soup.new_tag("li")
         # if h.name == "h1":
         #     return li
-        ref = h.get("id", "")
-        prefix = h.get("data-numbering", None)
+        ref = heading.get("id", "")
+        prefix = heading.get("data-numbering", None)
         a = (
             soup.new_tag("a", href=f"#{ref}", attrs={"data-numbering": prefix})
             if prefix is not None
             else soup.new_tag("a", href=f"#{ref}")
         )
-        for el in h.contents:
+        for el in heading.contents:
             if el.name == "a":
                 a.append(el.contents[0].replace("¶", ""))
             else:
                 a.append(_clone_element(el))
         li.append(a)
-        options.logger.debug(f"| [{h.get_text(separator=' ')}]({ref})")
+        options.logger.debug(f"| [{heading.get_text(separator=' ')}]({ref})")
         return li
 
     toc = soup.new_tag("article", id="doc-toc")
@@ -69,7 +69,7 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
     headings = soup.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
     for h in headings:
         if h.name == "h1":
-            h1li = makeLink(h)
+            h1li = makelink(h)
             h1ul.append(h1li)
             h2ul = h2li = h3ul = h3li = h4ul = h4li = h5ul = h5li = h6ul = None
 
@@ -79,7 +79,7 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
             if not h2ul:
                 h2ul = soup.new_tag("ul")
                 h1li.append(h2ul)
-            h2li = makeLink(h)
+            h2li = makelink(h)
             h2ul.append(h2li)
             h3ul = h3li = h4ul = h4li = h5ul = h5li = h6ul = None
 
@@ -91,7 +91,7 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
             if not h3ul:
                 h3ul = soup.new_tag("ul")
                 h2li.append(h3ul)
-            h3li = makeLink(h)
+            h3li = makelink(h)
             h3ul.append(h3li)
             h4ul = h4li = h5ul = h5li = h6ul = None
 
@@ -101,7 +101,7 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
             if not h4ul:
                 h4ul = soup.new_tag("ul")
                 h3li.append(h4ul)
-            h4li = makeLink(h)
+            h4li = makelink(h)
             h4ul.append(h4li)
             h5ul = h5li = h6ul = None
 
@@ -111,7 +111,7 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
             if not h5ul:
                 h5ul = soup.new_tag("ul")
                 h4li.append(h5ul)
-            h5li = makeLink(h)
+            h5li = makelink(h)
             h5ul.append(h5li)
             h6ul = None
 
@@ -121,7 +121,7 @@ def _make_indexes(soup: PageElement, options: Options) -> None:
             if not h6ul:
                 h6ul = soup.new_tag("ul")
                 h5li.append(h6ul)
-            h6li = makeLink(h)
+            h6li = makelink(h)
             h6ul.append(h6li)
 
         else:
@@ -181,18 +181,7 @@ def _inject_heading_order(soup: Tag, options: Options):
         h["data-numbering"] = prefix
 
 
-# def _is_exclude(url: str, options: Options) -> bool:
-#     if not url:
-#         return False
-#
-#     if url in options["excludes_children"]:
-#         options.logger.info(f"|  (exclude '{url}')")
-#         return True
-#
-#     return False
-
-
-def _clone_element(el: PageElement) -> PageElement:
+def _clone_element(el: Tag) -> Tag:
     if isinstance(el, NavigableString):
         return type(el)(el)
 

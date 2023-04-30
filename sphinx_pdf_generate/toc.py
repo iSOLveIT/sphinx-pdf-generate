@@ -1,9 +1,9 @@
-from bs4 import NavigableString, Tag
+from bs4 import NavigableString, Tag, BeautifulSoup, PageElement
 
 from .options import Options
 
 
-def make_toc(soup: Tag, options: Options):
+def make_toc(soup: BeautifulSoup, options: Options):
     """Generate a toc tree.
 
     Arguments:
@@ -15,7 +15,7 @@ def make_toc(soup: Tag, options: Options):
         _make_indexes(soup, options)
 
 
-def _make_indexes(soup: Tag, options: Options) -> None:
+def _make_indexes(soup: BeautifulSoup, options: Options) -> None:
     """Generate ordered chapter number and TOC of document.
 
     Arguments:
@@ -38,7 +38,7 @@ def _make_indexes(soup: Tag, options: Options) -> None:
     h2ul = h2li = h3ul = h3li = h4ul = h4li = h5ul = h5li = h6ul = None
     # exclude_lv2 = exclude_lv3 = False
 
-    def makelink(heading: Tag) -> Tag:
+    def makelink(heading: PageElement) -> PageElement:
         li = soup.new_tag("li")
         # if h.name == "h1":
         #     return li
@@ -130,7 +130,7 @@ def _make_indexes(soup: Tag, options: Options) -> None:
     soup.body.insert(0, toc)
 
 
-def _inject_heading_order(soup: Tag, options: Options):
+def _inject_heading_order(soup: BeautifulSoup, options: Options):
     level = options.toc_level
     if level < 1 or level > 6:
         return

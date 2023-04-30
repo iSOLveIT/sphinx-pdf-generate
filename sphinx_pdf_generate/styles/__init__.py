@@ -61,18 +61,18 @@ def style_for_print(options: Options, pdf_metadata: Optional[Dict[str, Any]] = N
     if options.cover:
         css_files.append("cover.css")
 
-    docs_src_dir = Path(options.rst_src_path).resolve()
+    docs_src_dir = Path(options.srcdir).resolve()
     custom_css_path = Path(options.custom_css_path) if options.custom_css_path is not None else Path()
     # Add plugin custom CSS
     if options.custom_css_path is not None:
         if not custom_css_path.is_absolute():
             custom_css_path = docs_src_dir.joinpath(options.custom_css_path)
         if custom_css_path.is_dir():
-            css_files.append("custom.css")
+            css_files.append("pdf_custom.css")
 
     css_styles_list: list[Tag] = []
     for css_file in css_files:
-        filename = base_path.joinpath(css_file) if css_file != "custom.css" else custom_css_path.joinpath(css_file)
+        filename = base_path.joinpath(css_file) if css_file != "pdf_custom.css" else custom_css_path.joinpath(css_file)
         if filename.is_file():
             with open(filename, encoding="UTF-8") as f:
                 css_rules = f.read()

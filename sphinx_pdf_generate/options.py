@@ -11,7 +11,7 @@ class Options:
         self.verbose: bool = config["verbose"]
         self.debug: bool = config["debug"]
         self.debug_target: Optional[str] = config["debug_target"]
-        self.srdir: Path = Path(config["srcdir"])
+        self.srcdir: Path = Path(config["srcdir"])
         self.outdir: Path = Path(config["outdir"])
         self._src_path: Optional[Path] = None
         self._dest_path: Optional[Path] = None
@@ -53,6 +53,9 @@ class Options:
         self.author_logo: Optional[str] = config["author_logo"]
         if isinstance(self.author_logo, str):
             self.author_logo = logo_path_filter(self.author_logo)
+
+        # Custom User Plugin
+        self.user_plugin_handler_path: Optional[str] = config["plugin_handler_path"]
 
         # for system
         self._logger = logger

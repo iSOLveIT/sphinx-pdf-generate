@@ -3,7 +3,7 @@ import re
 from bs4 import BeautifulSoup
 
 
-def restructure_tabbed_content(soup: BeautifulSoup):
+def restructure_tabbed_content(soup: BeautifulSoup) -> BeautifulSoup:
     """
     Function to restructure tabbed content in HTML, so it can be compatible for PDF conversion.
 

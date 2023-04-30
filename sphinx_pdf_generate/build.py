@@ -3,7 +3,7 @@
 import shlex
 import subprocess
 import sys
-from typing import List
+from typing import List, Optional, Union
 
 from colorama import Fore, Style
 
@@ -30,11 +30,11 @@ SPHINX_BUILD_OPTIONS = (
 )
 
 
-def _log(text, *, colour):
+def _log(text: str, *, colour: str) -> None:
     print(f"{Fore.GREEN}[sphinx-pdf-generate] {colour}{text}{Style.RESET_ALL}")
 
 
-def show(*, context=None, command=None, error=None):
+def show(*, context: Optional[str] = None, command: Union[list, tuple, None] = None, error: Optional[bool] = None):
     """Show context and command-to-be-executed, with nice formatting and colors."""
     if context is not None:
         _log(context, colour=Fore.CYAN)
@@ -45,11 +45,11 @@ def show(*, context=None, command=None, error=None):
         _log(context, colour=Fore.RED)
 
 
-def get_builder(sphinx_args: List[str]):
+def get_builder(sphinx_args: List[str]) -> int:
     """Prepare the function that calls sphinx."""
     sphinx_command = [sys.executable, "-m", "sphinx"] + sphinx_args
 
-    def build():
+    def build() -> int:
         """Generate the documentation using ``sphinx``."""
 
         try:

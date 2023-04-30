@@ -26,6 +26,9 @@ div.new_tabbed_block {
 table {
     max-width: 100%;
 }
+div.md-typeset__scrollwrap{
+    break-inside: always !important;
+}
 
 div.md-typeset__table table{
     border-radius: .1rem;
@@ -35,6 +38,8 @@ div.md-typeset__table table{
     overflow: auto;
     border-collapse: initial;
     border-spacing: 0;
+    break-inside: always !important;
+    break-before: avoid !important;
 }
 
 .md-typeset table:not([class]) {
@@ -87,3 +92,4 @@ h2 {
 .md-typeset a:after{;
     content:none
 }
+

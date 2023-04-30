@@ -26,6 +26,7 @@ GLOBAL_OPTIONS = {}.update(
     cover_title=None,
     cover_subtitle=None,
     custom_template_path="_templates",
+    plugin_handler_path=None,
     custom_css_path=None,
     toc=True,
     toc_numbering=True,
@@ -148,13 +149,12 @@ def main() -> None:
             )
             html_page_path.write_text(data=new_html_page_content, encoding="utf-8")
 
-        log.info(f"Converting {pdf_generator.pdf_num_files} file(s) to PDF took {pdf_generator.total_time:.1f}s")
-        log.info(f"Converted {pdf_generator.txt_num_files} PDF document's TOC to TXT")
+        show(context=f"Converting {pdf_generator.pdf_num_files} file(s) to PDF took {pdf_generator.total_time:.1f}s")
 
         if pdf_generator.num_errors > 0:
-            log.error(f"{pdf_generator.num_errors} conversion errors occurred (see above)")
+            show(context=f"{pdf_generator.num_errors} conversion errors occurred (see above)", error=True)
     else:
-        show(context="Sphinx build was unsuccessful. No PDF files were generated.")
+        show(context="Sphinx build was unsuccessful. No PDF files were generated.", error=True)
 
 
 class PDFGenerateException(Exception):

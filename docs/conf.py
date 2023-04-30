@@ -103,6 +103,7 @@ pdfgen_cover = True
 # pdfgen_cover_subtitle = ""
 pdfgen_custom_template_path = ""
 pdfgen_custom_css_path = ""
+# pdfgen_plugin_handler_path = "custom_code.py"
 pdfgen_toc = True
 pdfgen_toc_numbering = True
 pdfgen_toc_title = "Contents"

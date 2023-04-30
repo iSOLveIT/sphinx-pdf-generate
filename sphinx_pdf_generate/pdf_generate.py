@@ -33,6 +33,7 @@ def setup(app: Sphinx) -> Dict[str, Any]:
     app.add_config_value("pdfgen_cover_title", None, "html", types=[str])
     app.add_config_value("pdfgen_cover_subtitle", None, "html", types=[str])
     app.add_config_value("pdfgen_custom_template_path", "_templates", "html", types=[str])
+    app.add_config_value("pdfgen_plugin_handler_path", None, "html", types=[str])
     app.add_config_value("pdfgen_custom_css_path", None, "html", types=[str])
     app.add_config_value("pdfgen_toc", True, "html", types=[bool])
     app.add_config_value("pdfgen_toc_numbering", True, "html", types=[bool])
@@ -93,6 +94,7 @@ def build_finished(app: Sphinx, exception: Exception):
         cover_title=app.config.pdfgen_cover_title if app.config.pdfgen_cover_title else app.config.project,
         cover_subtitle=app.config.pdfgen_cover_subtitle,
         custom_template_path=app.config.pdfgen_custom_template_path,
+        plugin_handler_path=app.config.pdfgen_plugin_handler_path,
         custom_css_path=app.config.pdfgen_custom_css_path,
         toc=app.config.pdfgen_toc,
         toc_numbering=app.config.pdfgen_toc_numbering,

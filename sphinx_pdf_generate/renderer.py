@@ -2,6 +2,7 @@ import logging
 import re
 import sys
 from importlib import import_module
+from importlib.util import spec_from_file_location, module_from_spec
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -23,6 +24,7 @@ class Renderer:
         self._config = config
 
         self.theme = self._load_theme_handler()
+        self.user_plugin = self._load_user_plugin_handler()
         self.pgnum = 0
         self.pages = []
 
@@ -49,6 +51,7 @@ class Renderer:
         soup = prep_separate(soup, base_url, self._options.site_url, self._config["outdir"])
         toc.make_toc(soup, self._options)
         cover.make_cover(soup, self._options, self._config, pdf_metadata=pdf_metadata)
+        self.user_plugin.main(soup=soup)
 
         # Enable Debugging
         not_as_uri = re.compile(r"^file:/{,2}")
@@ -116,3 +119,22 @@ class Renderer:
         except ImportError as e:
             self.logger.error(f"Could not load theme handler {theme}: {e}", file=sys.stderr)
             return generic_theme
+
+    def _load_user_plugin_handler(self):
+        custom_handler_path = self._options.user_plugin_handler_path
+        module_name = ".user_plugin"
+
+        if custom_handler_path:
+            try:
+                spec = spec_from_file_location(module_name, Path.cwd().joinpath(custom_handler_path))
+                mod = module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                return mod
+            except FileNotFoundError as e:
+                self.logger.error(
+                    'Could not load the user plugin handler from custom directory "{}": {}'.format(
+                        custom_handler_path, e
+                    ),
+                    file=sys.stderr,
+                )
+                pass

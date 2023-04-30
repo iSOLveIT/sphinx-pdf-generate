@@ -38,7 +38,7 @@ class Template:
         def generate():
             base_path = Path(Path(__file__).parent).resolve()
             template_paths = []
-            docs_src_dir = Path(self._options.rst_src_path).resolve()
+            docs_src_dir = Path(self._options.srcdir).resolve()
             # Include the template path specified under the `pdfgen_custom_template_path` configuration under conf.py
             custom_template_path = Path(self._options.custom_template_path)
             if not custom_template_path.is_absolute():

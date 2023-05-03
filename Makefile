@@ -14,10 +14,6 @@ test:
 
 .PHONY: docs-html
 docs-html:
-	poetry run sphinx-build -a -E -j auto -b html docs/ docs/_build/html
-
-.PHONY: docs-html
-docs-html-fast:
 	poetry run sphinx-build -j auto -b html docs/ docs/_build/html
 
 .PHONY: docs-linkcheck

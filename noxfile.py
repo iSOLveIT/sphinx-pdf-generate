@@ -27,7 +27,7 @@ def is_supported(python: str, sphinx: str, docutils: str) -> bool:
 def run_tests(session, sphinx, docutils):
     session.install(".")
     session.install(*TEST_DEPENDENCIES)
-    session.run("pip", "install", "-r", "docs/doc-requirements.txt", silent=True)
+    session.run("pip", "install", "-r", "docs/requirements.txt", silent=True)
     session.run("pip", "install", f"sphinx=={sphinx}", silent=True)
     session.run("pip", "install", f"docutils=={docutils}", silent=True)
     session.run("echo", "TEST FINAL PACKAGE LIST", external=True)
@@ -52,5 +52,5 @@ def linkcheck(session):
     # our doc has too many links to GitHub.
     session.run("pip", "install", "sphinx==5.2.1", silent=True)
 
-    session.run("pip", "install", "-r", "docs/doc-requirements.txt", silent=True)
+    session.run("pip", "install", "-r", "docs/requirements.txt", silent=True)
     session.run("make", "docs-linkcheck", external=True)

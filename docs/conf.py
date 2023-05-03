@@ -35,25 +35,6 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "research.md"]
 html_theme = "sphinx_immaterial"
 
 html_title = "Home"
-# Material theme options (see theme.conf for more information)
-# html_theme_options = {
-#     # Set the name of the project to appear in the navigation.
-#     "nav_title": "Home",
-#     # Specify a base_url used to generate sitemap.xml. If not
-#     # specified, then no sitemap will be built.
-#     "base_url": "https://docs.chipsee.com",
-#     # Set the color and the accent color
-#     "color_primary": "deep-orange",
-#     "color_accent": "deep-orange",
-#     # Visible levels of the global TOC; -1 means unlimited
-#     "globaltoc_depth": 4,
-#     # If False, expand all TOC entries
-#     "globaltoc_collapse": True,
-#     # If True, show hidden TOC entries
-#     "globaltoc_includehidden": True,
-#     # 'html_minify': True,
-#     "css_minify": True,
-# }
 html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 html_static_path = ["_static"]
 

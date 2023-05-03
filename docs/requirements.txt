@@ -1,4 +1,4 @@
 sphinx
 sphinx-design
-sphinx-material
+sphinx-immaterial
 sphinx-autobuild

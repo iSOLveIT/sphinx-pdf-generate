@@ -26,6 +26,7 @@ GLOBAL_OPTIONS = {}.update(
     cover_title=None,
     cover_subtitle=None,
     custom_template_path="_templates",
+    theme_handler_path=None,
     plugin_handler_path=None,
     custom_css_path=None,
     toc=True,

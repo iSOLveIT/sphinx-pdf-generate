@@ -54,7 +54,8 @@ class Options:
         if isinstance(self.author_logo, str):
             self.author_logo = logo_path_filter(self.author_logo)
 
-        # Custom User Plugin
+        # Custom Theme and User Plugin
+        self.theme_handler_path: Optional[str] = config["theme_handler_path"]
         self.user_plugin_handler_path: Optional[str] = config["plugin_handler_path"]
 
         # for system

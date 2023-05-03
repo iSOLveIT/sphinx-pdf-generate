@@ -1,7 +1,7 @@
+:pdf-build: False
 :pdf-title: Home page
 :pdf-filename: Index Document
-:pdf-revision: 1.10
-:pdf-toc_txt: true
+:pdf-revision: 0.0.1
 
 .. Sphinx-Pdf-Generate documentation master file, created by
    sphinx-quickstart on Thu Mar 23 05:16:16 2023.
@@ -97,7 +97,7 @@ Options
 Aside the extension configuration, you can also control how the generated PDF file should look like.
 You can do so by using what we call the **local options** in your RST file.
 
-For more information on the local options, visit the `local options page <https://isolveit.github.io/sphinx-pdf-generate/options.html>`_ on our documentation website.
+For more information on the options, visit the :ref:`options page <plugin-options>` on our documentation website.
 
 Contributing
 ------------
@@ -117,5 +117,7 @@ Their projects inspired the creation of this plugin. We've used some of their co
    :maxdepth: 2
    :hidden:
 
+   options
+   customisation
    contribute
-   test/index
+   changelog

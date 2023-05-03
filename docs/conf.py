@@ -22,7 +22,7 @@ version = __version__
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
-    "sphinx_material",
+    "sphinx_immaterial",
     "sphinx_pdf_generate",
 ]
 
@@ -32,33 +32,36 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "research.md"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "sphinx_material"
+html_theme = "sphinx_immaterial"
 
 html_title = "Home"
 # Material theme options (see theme.conf for more information)
-html_theme_options = {
-    # Set the name of the project to appear in the navigation.
-    "nav_title": "Home",
-    # Specify a base_url used to generate sitemap.xml. If not
-    # specified, then no sitemap will be built.
-    "base_url": "https://docs.chipsee.com",
-    # Set the color and the accent color
-    "color_primary": "deep-orange",
-    "color_accent": "deep-orange",
-    # Visible levels of the global TOC; -1 means unlimited
-    "globaltoc_depth": 4,
-    # If False, expand all TOC entries
-    "globaltoc_collapse": True,
-    # If True, show hidden TOC entries
-    "globaltoc_includehidden": True,
-    # 'html_minify': True,
-    "css_minify": True,
-}
+# html_theme_options = {
+#     # Set the name of the project to appear in the navigation.
+#     "nav_title": "Home",
+#     # Specify a base_url used to generate sitemap.xml. If not
+#     # specified, then no sitemap will be built.
+#     "base_url": "https://docs.chipsee.com",
+#     # Set the color and the accent color
+#     "color_primary": "deep-orange",
+#     "color_accent": "deep-orange",
+#     # Visible levels of the global TOC; -1 means unlimited
+#     "globaltoc_depth": 4,
+#     # If False, expand all TOC entries
+#     "globaltoc_collapse": True,
+#     # If True, show hidden TOC entries
+#     "globaltoc_includehidden": True,
+#     # 'html_minify': True,
+#     "css_minify": True,
+# }
 html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 html_static_path = ["_static"]
 
 rst_epilog = """
+.. |br| raw:: html 
 
+   <br>
+   
 .. _github-issues: https://github.com/iSOLveIT/sphinx-pdf-generate/issues
 
 .. |github-issues| replace:: GitHub issues
@@ -91,11 +94,11 @@ rst_epilog = """
 
 # Sphinx-PDF-Generate configurations
 pdfgen_verbose = False
-pdfgen_site_url = "http://127.0.0.1:8000"
+pdfgen_site_url = "https://isolveit.github.io/sphinx-pdf-generate/"
 # pdfgen_debug = True
 # pdfgen_debug_target = "index.rst"
-pdfgen_author = "Chipsee"
-pdfgen_author_logo = "_static/logo-chipsee-white.png"
+pdfgen_author = "iSOLveIT"
+# pdfgen_author_logo = ""
 pdfgen_copyright = copyright
 pdfgen_disclaimer = "Disclaimer: Content can change at anytime and best to refer to website for latest information."
 pdfgen_cover = True

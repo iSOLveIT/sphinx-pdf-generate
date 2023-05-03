@@ -51,7 +51,8 @@ class Renderer:
         soup = prep_separate(soup, base_url, self._options.site_url, self._config["outdir"])
         toc.make_toc(soup, self._options)
         cover.make_cover(soup, self._options, self._config, pdf_metadata=pdf_metadata)
-        self.user_plugin.main(soup=soup)
+        if self.user_plugin:
+            self.user_plugin.main(soup=soup)
 
         # Enable Debugging
         not_as_uri = re.compile(r"^file:/{,2}")
@@ -112,28 +113,46 @@ class Renderer:
 
     def _load_theme_handler(self):
         theme = self._options.theme_name
+        custom_theme_handler_path = self._options.theme_handler_path
         module_name = "." + (theme or "generic").replace("-", "_")
 
+        if custom_theme_handler_path:
+            try:
+                spec = spec_from_file_location(module_name, Path.cwd().joinpath(custom_theme_handler_path))
+                mod = module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                return mod
+            except FileNotFoundError as e:
+                self.logger.error(
+                    'Could not load theme handler {} from custom directory "{}": {}'.format(
+                        theme, custom_theme_handler_path, e
+                    ),
+                    file=sys.stderr,
+                )
+                pass
         try:
             return import_module(module_name, "sphinx_pdf_generate.themes")
         except ImportError as e:
-            self.logger.error(f"Could not load theme handler {theme}: {e}", file=sys.stderr)
+            self.logger.error(
+                f"Could not load theme handler {theme} because it is not a supported theme by default: {e}",
+                file=sys.stderr
+            )
             return generic_theme
 
     def _load_user_plugin_handler(self):
-        custom_handler_path = self._options.user_plugin_handler_path
+        custom_plugin_handler_path = self._options.user_plugin_handler_path
         module_name = ".user_plugin"
 
-        if custom_handler_path:
+        if custom_plugin_handler_path:
             try:
-                spec = spec_from_file_location(module_name, Path.cwd().joinpath(custom_handler_path))
+                spec = spec_from_file_location(module_name, Path.cwd().joinpath(custom_plugin_handler_path))
                 mod = module_from_spec(spec)
                 spec.loader.exec_module(mod)
                 return mod
             except FileNotFoundError as e:
                 self.logger.error(
                     'Could not load the user plugin handler from custom directory "{}": {}'.format(
-                        custom_handler_path, e
+                        custom_plugin_handler_path, e
                     ),
                     file=sys.stderr,
                 )

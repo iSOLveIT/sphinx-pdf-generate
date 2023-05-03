@@ -11,7 +11,6 @@ PDF_LOCAL_OPTIONS: List[Tuple[str, Union[bool, str, None]]] = [
     ("pdf-type", "document"),
     ("pdf-filename", None),
     ("pdf-revision", None),
-    ("pdf-toc_txt", False),
 ]
 
 

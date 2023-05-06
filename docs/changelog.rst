@@ -38,14 +38,24 @@ Changelog
 0.0.1
 +++++
 
-Released: **22-03-2023**
+Released: **06-05-2023**
 
-* Updated documentation and made minor changes to plugin code.
-* Added the `csv_name` local option.
-* Improvement: Added feature to generate a CSV file for all documents with the `toc_txt` local option set to `true`.
-* Improvement: Added changes that appends the revision number of a document to the filename.
-* Bugfix: Added default URL to use if `site_url` is not defined in mkdocs.yml. Fix for issue [#15](https://github.com/iSOLveIT/mkdocs-pdf-generate/issues/15).
-* Improvement: Added the `toc_txt` local option that allows users to build TXT file containing the Table of Contents
-* Minor improvements: Rewrote logging messages.
-* Package setup: Changed package from using setuptools to pyproject.toml
+* **06/05/2023** :
+    * Updated docs
+    * Updated code for restructuring content tabs look on PDFs
+    * Updated plugin's CSS
+* **03/05/2023** :
+    * Added docs for options, changelog, and customisation
+    * Added GH Action workflows
+* **30/04/2023** :
+    * Added ``pdfgen_plugin_handler_path`` config variable
+    * Updated cli print outputs
+    * Updated plugin's CSS
+    * Updated type hints for some methods and classes
+* **23/04/2023** - Added code formatting, linting, and type-hints
+* **21/04/2023** - Added Sphinx-Material theme support
+* **06/04/2023** :
+    * Added page-break role
+    * Removed metadata CLI argument and unwanted codes
+* **07/03/2023** - Setup Sphinx-PDF-Generate project
 

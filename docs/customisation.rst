@@ -1,6 +1,7 @@
 :pdf-filename: Customisation
 :pdf-title: Customize Plugin
 :pdf-revision: 0.0.1
+:pdf-type: manual
 
 .. _plugin-customisation:
 
@@ -34,6 +35,8 @@ The plugin provides the following variables which you can use in your custom Jin
 
 Using `jinja2 <https://jinja.palletsprojects.com/en/2.11.x/templates/>`_ syntax, you can access all the data above.
 Example: use `{{ author }}` to get the value for the :ref:`pdfgen_author` option:
+
+:pagebreak:`True`
 
 .. _use-custom-template:
 
@@ -81,19 +84,12 @@ In the cover template file, write your preferred template syntax into it.
                 {% if author %}
                     <p id="author">{{ author | e }}</p>
                 {% endif %}
-                <a href="{{ site_url }}" id="project_logo" title="Resource Centre">
-                    <img src="{{ author_logo }}" alt="Company Logo"
-                    style="width:80px;height:30px"/>
-                </a>
             </address>
         </div>
         <div class="reserved_rights">
             <address>
                 {% if copyright %}
                     <p id="copyright">{{ copyright | e }}</p>
-                {% endif %}
-                {% if disclaimer %}
-                    <p id="disclaimer">{{ disclaimer | e }}</p>
                 {% endif %}
             </address>
         </div>
@@ -165,7 +161,7 @@ The plugin allows you to change the orientation of a page to fit the content on 
 For example, if you have a table on a page, and it is too wide to fit the current orientation used by the page, 
 you can change the page orientation of the individual page by doing the following:
 
-* Wrap the RST content in a raw HTML ``div`` element. The ``div`` element should have its ``class`` attribute set to ``"rotated-page"``. Example:
+* Wrap the RST content in a raw HTML ``div`` element. The ``div`` element should have its ``class`` attribute set to ``"rotated-page"``. |br| Example:
     .. code-block:: rst
 
         .. raw:: html
@@ -179,7 +175,13 @@ you can change the page orientation of the individual page by doing the followin
             </div>
 * Create a ``pdf_custom.css`` file and set these CSS variables under the ``:root {}`` CSS rule:
     * ``--base-page-orientation`` - default page orientation to use and
-    * ``--rotated-page-orientation`` - page orientation to use for rotated pages. |br| E.g. ``:root {--base-page-orientation: a4 portrait; --rotated-page-orientation: a4 landscape;}``
+    * ``--rotated-page-orientation`` - page orientation to use for rotated pages. |br| Example:
+        .. code-block:: css
+
+            :root {
+                --base-page-orientation: a4 portrait;
+                --rotated-page-orientation: a4 landscape;
+            }
 
 .. raw:: html
 
@@ -287,3 +289,46 @@ and the ``pdf_custom.css`` file contains this code:
           page-break-before: always;
           page-break-after: always;
         }
+
+Roles
+-----
+
+pagebreak role
+++++++++++++++
+
+Adds a page break in the PDF document at the position it was called in the RST document.
+You can use the role by the calling the role in the RST document as ``:pagebreak:`True```.
+
+For example, you have the following RST document:
+
+.. code-block:: rst
+
+    Title 1
+    =======
+
+    This is the first page content.
+
+    Title 2
+    =======
+
+    This is the next page content.
+
+But if you want to move the section **Title 2** and its contents to the next page, you can do the following:
+
+.. code-block:: rst
+
+    Title 1
+    =======
+
+    This is the first page content.
+
+    :pagebreak:`True`
+
+    Title 2
+    =======
+
+    This is the next page content.
+
+.. tip::
+
+    You can click on the edit button at the beginning of each page to view how we used the ``pagebreak`` role in the RST source code used in generating the page.

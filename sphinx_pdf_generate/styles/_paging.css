@@ -51,5 +51,25 @@
     font-family: var(--md-code-font), monospace;
     margin-top: 0;
   }
+
+  label.sd-tab-label, div.sd-tab-set {
+    display: block !important;
+  }
+
+  div.new_tabbed_block {
+    display: block;
+  }
+
+  .sd-tab-set > label {
+	border: none;
+	color: #000000de;
+	font-size: 14px;
+	font-weight: 700;
+	padding: .5em 0;
+  }
+
+  .sd-tab-set > input:checked + label {
+	color: #000000de;
+  }
 }
 

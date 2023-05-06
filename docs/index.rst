@@ -1,7 +1,7 @@
-:pdf-build: False
-:pdf-title: Home page
-:pdf-filename: Index Document
+:pdf-title: Sphinx-PDF Generate
+:pdf-filename: Introduction
 :pdf-revision: 0.0.1
+:pdf-type: manual
 
 .. Sphinx-Pdf-Generate documentation master file, created by
    sphinx-quickstart on Thu Mar 23 05:16:16 2023.
@@ -9,6 +9,11 @@
    contain the root `toctree` directive.
 
 .. _getting-started:
+
+.. image:: _static/SPDF-logo.png
+   :alt: Sphinx-PDF Generate Logo
+   :align: center
+   :width: 95%
 
 Sphinx PDF Generate
 ===================
@@ -36,40 +41,18 @@ Requirements
 
 :pagebreak:`True`
 
-Installation
-------------
+Install the package with pip
+----------------------------
 
 .. note::
 
-    Recommended to install the extension in a Python virtualenv.
-
-Install the package with pip
-++++++++++++++++++++++++++++
-
-**Linux & MacOS**
+    We recommend you install the extension in a Python virtualenv.
 
 .. code-block:: bash
 
-    python -m pip install -e "git+https://github.com/iSOLveIT/sphinx-pdf-generate/#egg=sphinx-pdf-generate"
+    pip install sphinx-pdf-generate
 
-
-**Windows**
-
-.. code-block:: PowerShell
-
-    python -m pip install -e "git+https://github.com/iSOLveIT/sphinx-pdf-generate/#egg=sphinx-pdf-generate"
-
-
-Install from source repository
-++++++++++++++++++++++++++++++
-
-.. code-block:: bash
-
-    cd [YOUR_PROJECT_DIRECTORY]
-    git clone https://github.com/iSOLveIT/sphinx-pdf-generate
-    cd sphinx-pdf-generate
-    pip install -e .
-
+You can refer to the :ref:`Installation <install>` page for information.
 
 Activate Extension
 ------------------
@@ -80,24 +63,27 @@ You can activate the extension in your **conf.py** file by adding the following:
 
     extensions = ["sphinx_pdf_generate"]
 
-You can then set the appropriate extension configuration. Visit the `configuration page <https://isolveit.github.io/sphinx-pdf-generate/configuration.html>`_ on our documentation website to read more.
+You can then set the appropriate extension configuration. Visit the :ref:`options <plugin-options>` page to read more.
 
-Testing
--------
+Usage
+-----
+You can generate PDF documents for your documentation project by using the command ``sphinx-pdf-generate sourcedir outdir`` as below:
 
-When building your repository with the ``sphinx-build`` command, you should now see the following message at the end of your build output:
+.. code-block:: bash
 
-    Converting 17 files to PDF took 15.6s
+    $ sphinx-pdf-generate docs/source docs/_build/html
 
-In your ``OUTPUTDIR`` e.g.``_build/html`` you should now have a PDF file for every HTML page.
+After the documentation build is complete, you should now see the following message at the end of your build output:
 
-Options
--------
+.. code-block:: bash
 
-Aside the extension configuration, you can also control how the generated PDF file should look like.
-You can do so by using what we call the **local options** in your RST file.
+    [sphinx-pdf-generate] Converting 7 file(s) to PDF took 12.1s
 
-For more information on the options, visit the :ref:`options page <plugin-options>` on our documentation website.
+In your ``OUTPUTDIR`` e.g.(``docs/_build/html``) you should now have a PDF file for every RST document you decided to build.
+
+You can refer to the :ref:`Quickstart <quickstart>` page for a good introduction to Sphinx-PDF Generate.
+
+:pagebreak:`True`
 
 Contributing
 ------------
@@ -117,7 +103,10 @@ Their projects inspired the creation of this plugin. We've used some of their co
    :maxdepth: 2
    :hidden:
 
-   options
-   customisation
-   contribute
-   changelog
+   Installation <install>
+   Quickstart <quickstart>
+   Options <options>
+   CLI Tool <cli>
+   Customisation <customisation>
+   Contributions <contribute>
+   Changelog & License <changelog>

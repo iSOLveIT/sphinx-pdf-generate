@@ -1,22 +1,22 @@
 :pdf-title: Plugin Options
 :pdf-filename: Options
 :pdf-revision: 0.0.1
+:pdf-type: manual
 
 .. _plugin-options:
 
 Options
 =======
 
-Global Options
---------------
-
-The plugin allows users to pass in both global and local options.
+The plugin allows users to pass in both global and local options. Some of these global options are used as default options when local options are not set or the plugin's default values are used by the PDF plugin.
 
 .. note::
 
     Local options have higher precedence than global options.
 
-Some of these global options are used as default options when local options are not set.
+Global Options
+--------------
+
 The global options are passed to the plugin through the **conf.py** file and they are:
 
 .. code-block:: python
@@ -44,6 +44,8 @@ The global options are passed to the plugin through the **conf.py** file and the
         "default": "https://example.com/cover.svg",
         "type1": "_static/img/type1.png",
     }
+
+:pagebreak:`True`
 
 for Cover
 +++++++++
@@ -95,6 +97,8 @@ pdfgen_author
 Set the author text. |br|  
 **default**: use ``author`` variable in your project's **conf.py**
 
+:pagebreak:`True`
+
 pdfgen_author_logo
 ******************
 
@@ -103,7 +107,7 @@ Provide a logo image which you can use in the cover page. |br|
 
 .. tip::
     
-    Using an SVG image as the value for author logo is recommended.
+    Using an SVG image as the value for author logo is recommended because it is easier to adjust the image size without losing the quality of the image.
 
 pdfgen_copyright
 ****************
@@ -146,6 +150,8 @@ The ``value`` for a ``key`` must be the path to the image.
 
     Recommended: You must specify an image path for the ``default`` key-value pair. We will use the image as
     the cover image for any document that does not specify the `pdf-type`_ local pdf metadata option.
+
+:pagebreak:`True`
 
 for Heading and TOC
 +++++++++++++++++++
@@ -195,6 +201,8 @@ This folder is where you save the custom cover template files (e.g. cover.html).
     or ``manual.html.jinja2`` or ``manual.htm``.
 
     You can refer to this :ref:`example about how to use a custom cover template <use-custom-template>`.
+
+:pagebreak:`True`
 
 .. _custom_css_path:
 
@@ -251,6 +259,8 @@ The ``theme_handler.py`` file should should contain these two functions below:
         :param href: URL path to the PDF document generated
         """
 
+:pagebreak:`True`
+
 Example of the above functions being used:
 
 .. code-block:: python
@@ -299,8 +309,8 @@ This option allows you to add custom features to the PDF generator plugin. The p
         ├── conf.py
         ├── index.rst
         ├── _build
-    .
-    .
+
+:pagebreak:`True`
 
 The ``custom_code.py`` file should should contain the ``main()`` function like below:
 
@@ -319,7 +329,6 @@ The ``custom_code.py`` file should should contain the ``main()`` function like b
 
         variable = some_function()
         return variable
-
 
     if __name__ == "__main__":
         main()
@@ -345,14 +354,12 @@ Example of the above function being used in a custom user plugin file called ``f
             pdf_figure = soup.new_tag("figure", attrs={"class": "align-center"})
             pdf_img: Tag = soup.new_tag("img", attrs={"src": img["src"], "alt": img["alt"]})
             pdf_figcaption = soup.new_tag("figcaption")
-
             figcaption_text = soup.new_tag("p", attrs={"class": "caption-text"})
             figcaption_text.append(img["alt"])
             pdf_figcaption.append(figcaption_text)
 
             pdf_figure.append(pdf_img)
             pdf_figure.append(pdf_figcaption)
-
             pdf_thumbnails.append(pdf_figure)
 
         # Create a div containing new PDF thumbnails.
@@ -387,7 +394,7 @@ content used to generate the PDF documents.
  
 **default**: ``False``
 
-.. note::
+.. tip::
 
     It is recommended to add the **pdf_html_debug** folder to your ignored files when using a version control system.
     
@@ -413,6 +420,8 @@ pdfgen_site_url
 
 This option allows you to set the site url for your documentation project. Example: ``pdfgen_site_url = "https://isolveit.github.io/sphinx-pdf-generate/"`` |br|
 **default**: ``http://127.0.0.1:8000``
+
+:pagebreak:`True`
 
 .. _local-options:
 

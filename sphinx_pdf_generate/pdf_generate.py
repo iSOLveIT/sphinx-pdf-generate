@@ -77,7 +77,7 @@ def generate_sources_to_convert(
 
 def page_break_role(name, rawtext, text, lineno, inliner, options={}, content=[]):  # noqa B006
     """Sphinx role to insert a page break in the HTML output."""
-    return [nodes.raw("", '<p class="page-break"></p>', format="html")], []
+    return [nodes.raw("", '<p class="page-break" style="margin: 0"></p>', format="html")], []
 
 
 def build_finished(app: Sphinx, exception: Exception):

@@ -55,23 +55,14 @@ Installation
 
 .. note::
 
-    Recommended to install the extension in a Python virtualenv.
+    We recommend you install the extension in a Python virtualenv.
 
 Install the package with pip
 ++++++++++++++++++++++++++++
 
-**Linux & MacOS**
-
 .. code-block:: bash
 
-    python -m pip install -e "git+https://github.com/iSOLveIT/sphinx-pdf-generate/#egg=sphinx-pdf-generate"
-
-
-**Windows**
-
-.. code-block:: PowerShell
-
-    python -m pip install -e "git+https://github.com/iSOLveIT/sphinx-pdf-generate/#egg=sphinx-pdf-generate"
+    pip install sphinx-pdf-generate
 
 
 Install from source repository
@@ -84,6 +75,7 @@ Install from source repository
     cd sphinx-pdf-generate
     pip install -e .
 
+You can refer to the `installation <https://isolveit.github.io/sphinx-pdf-generate/install.html>`_ page for information.
 
 Activate Extension
 ------------------
@@ -94,24 +86,25 @@ You can activate the extension in your **conf.py** file by adding the following:
 
     extensions = ["sphinx_pdf_generate"]
 
-You can then set the appropriate extension configuration. Visit the `configuration page <https://isolveit.github.io/sphinx-pdf-generate/configuration.html>`_ on our documentation website to read more.
+You can then set the appropriate extension configuration. Visit the `options <https://isolveit.github.io/sphinx-pdf-generate/options.html>`_  page on our documentation website to read more.
 
-Testing
--------
+Usage
+-----
+You can generate PDF documents for your documentation project by using the command ``sphinx-pdf-generate sourcedir outdir`` as below:
 
-When building your repository with the ``sphinx-build`` command, you should now see the following message at the end of your build output:
+.. code-block:: bash
 
-    Converting 17 files to PDF took 15.6s
+    $ sphinx-pdf-generate docs/source docs/_build/html
 
-In your ``OUTPUTDIR`` e.g.``_build/html`` you should now have a PDF file for every HTML page.
+After the documentation build is complete, you should now see the following message at the end of your build output:
 
-Options
--------
+.. code-block:: bash
 
-Aside the extension configuration, you can also control how the generated PDF file should look like.
-You can do so by using what we call the **local options** in your RST file.
+    [sphinx-pdf-generate] Converting 7 file(s) to PDF took 12.1s
 
-For more information on the local options, visit the `local options page <https://isolveit.github.io/sphinx-pdf-generate/options.html>`_ on our documentation website.
+In your ``OUTPUTDIR`` e.g.(``docs/_build/html``) you should now have a PDF file for every RST document you decided to build.
+
+You can refer to the `quickstart <https://isolveit.github.io/sphinx-pdf-generate/quickstart.html>`_ page for a good introduction to Sphinx-PDF Generate.
 
 Contributing
 ------------

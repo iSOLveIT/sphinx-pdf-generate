@@ -1,6 +1,7 @@
-:pdf-filename: Changelog
-:pdf-title: Changelog & License for MkDocs PDF Generate Plugin
+:pdf-filename: Changelog & License
+:pdf-title: Changelog & License
 :pdf-revision: 0.0.1
+:pdf-type: manual
 
 
 Changelog & License

@@ -34,9 +34,6 @@ div.tabbed-content {
 div.tabbed-labels {
     display: block !important;
 }
-div.new_tabbed_block {
-  display: block;
-}
 
 /* Admonitions */
 .md-typeset :is(.note)>:is(.admonition-title,summary):before{

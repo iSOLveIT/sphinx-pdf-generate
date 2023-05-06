@@ -14,8 +14,8 @@ from sphinx_pdf_generate.version import __version__
 sys.path.append(os.path.abspath("../"))
 
 project = "Sphinx-Pdf-Generate"
-copyright = "2023, Chipsee"
-author = "Chipsee"
+copyright = "2023, iSOLveIT"
+author = "iSOLveIT"
 version = __version__
 
 # -- General configuration ---------------------------------------------------
@@ -23,6 +23,7 @@ version = __version__
 
 extensions = [
     "sphinx_immaterial",
+    "sphinx_design",
     "sphinx_pdf_generate",
 ]
 
@@ -33,7 +34,46 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "research.md"]
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = "sphinx_immaterial"
-
+html_theme_options = {
+    "icon": {
+        "repo": "fontawesome/brands/github",
+    },
+    "site_url": "https://isolveit.github.io/sphinx-pdf-generate",
+    "repo_url": "https://github.com/iSOLveIT/sphinx-pdf-generate",
+    "repo_name": "Sphinx-PDF Generate",
+    "repo_type": "github",
+    "edit_uri": "blob/main/docs",
+    "globaltoc_collapse": True,
+    "features": [
+        "navigation.sections",
+        "navigation.top",
+        "search.share",
+    ],
+    "palette": [
+        {
+            "media": "(prefers-color-scheme: light)",
+            "scheme": "default",
+            "primary": "deep-purple",
+            "accent": "deep-purple",
+            "toggle": {
+                "icon": "material/weather-night",
+                "name": "Switch to dark mode",
+            },
+        },
+        {
+            "media": "(prefers-color-scheme: dark)",
+            "scheme": "slate",
+            "primary": "deep-purple",
+            "accent": "deep-purple",
+            "toggle": {
+                "icon": "material/weather-sunny",
+                "name": "Switch to light mode",
+            },
+        },
+    ],
+}
+html_logo = "_static/SPDF-logo.png"
+html_favicon = "_static/SPDF-logo.png"
 html_title = "Home"
 html_sidebars = {"**": ["globaltoc.html", "localtoc.html", "searchbox.html"]}
 html_static_path = ["_static"]
@@ -79,7 +119,7 @@ pdfgen_site_url = "https://isolveit.github.io/sphinx-pdf-generate/"
 # pdfgen_debug = True
 # pdfgen_debug_target = "index.rst"
 pdfgen_author = "iSOLveIT"
-# pdfgen_author_logo = ""
+pdfgen_author_logo = "_static/SPDF-logo.png"
 pdfgen_copyright = copyright
 pdfgen_disclaimer = "Disclaimer: Content can change at anytime and best to refer to website for latest information."
 pdfgen_cover = True

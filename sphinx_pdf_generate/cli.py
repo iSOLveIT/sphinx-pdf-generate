@@ -67,17 +67,18 @@ def get_parser():
         pass
 
     parser = argparse.ArgumentParser(
-        formatter_class=RawTextArgumentDefaultsHelpFormatter, description="Build PDF files for Sphinx source files."
+        formatter_class=RawTextArgumentDefaultsHelpFormatter,
+        description="Build PDF documents from Sphinx HTML build files.",
     )
 
     parser.add_argument("--version", action="version", version=f"sphinx-pdf-generate {__version__}")
 
     sphinx_arguments = ", ".join(f"-{arg}" if meta is None else f"-{arg}={meta}" for arg, meta in SPHINX_BUILD_OPTIONS)
     sphinx_parser = parser.add_argument_group(
-        "sphinx's arguments",
+        "Sphinx's arguments",
         (
             "The following arguments are forwarded as-is to Sphinx. Please look at "
-            f"`sphinx --help` for more information.\n  {sphinx_arguments}"
+            f"`sphinx-build --help` for more information.\n  {sphinx_arguments}"
         ),
     )
 

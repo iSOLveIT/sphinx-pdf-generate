@@ -1,7 +1,7 @@
 :pdf-title: Contributions
 :pdf-filename: Contributors Guide
 :pdf-revision: 1.10
-:pdf-toc_txt: false
+:pdf-type: manual
 
 .. _contribute:
 

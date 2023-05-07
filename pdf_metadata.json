@@ -27,7 +27,7 @@
     },
     "LOCAL_OPTIONS": {
         "changelog": {
-            "pdf-filename": "Changelog & License",
+            "pdf-filename": "Changelog/License",
             "pdf-title": "Changelog & License",
             "pdf-revision": "0.0.1",
             "pdf-type": "manual"
@@ -41,7 +41,7 @@
         "contribute": {
             "pdf-title": "Contributions",
             "pdf-filename": "Contributors Guide",
-            "pdf-revision": "1.10",
+            "pdf-revision": "0.0.1",
             "pdf-type": "manual"
         },
         "customisation": {

@@ -43,7 +43,7 @@ def _make_indexes(soup: BeautifulSoup, options: Options) -> None:
         ref = heading.get("id", "")
         if ref == "":
             ref = heading.parent.get("id")  # support for all sphinx themes
-        prefix = heading.get("data-numbering", None)
+        prefix = heading.get("data-numbering")
         a = (
             soup.new_tag("a", href=f"#{ref}", attrs={"data-numbering": prefix})
             if prefix is not None

@@ -190,7 +190,7 @@ you can change the page orientation of the individual page by doing the followin
 Example
 *******
 
-In this example, we are going to change the page orientation for `this subsection <example>`_.
+In this example, we are going to change the page orientation for `this subsection <#example>`_.
 
 .. note::
 
@@ -221,7 +221,7 @@ In this example, we are going to change the page orientation for `this subsectio
 
     </div>
 
-In the example above, the `example section <example>`_ is wrapped inside a ``div`` like below:
+In the example above, the `example`_ section is wrapped inside a ``div`` like below:
 
 .. code-block:: rst
 

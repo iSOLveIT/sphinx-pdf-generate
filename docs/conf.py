@@ -91,7 +91,7 @@ rst_epilog = """
 
 .. |weasyprint-linux| replace:: Linux
 
-.. _weasyprint-macos: https://weasyprint.readthedocs.io/en/latest/install.html#os-x
+.. _weasyprint-macos: https://weasyprint.readthedocs.io/en/latest/install.html#macos
 
 .. |weasyprint-macos| replace:: MacOS
 

@@ -1,6 +1,6 @@
 # This is a workflow to compile Sphinx sources on *main* branch and update *docs-build* branch
 
-name: Compile Sphinx source and update docs-build branch
+name: Docs
 
 # Controls when the workflow will run
 on:

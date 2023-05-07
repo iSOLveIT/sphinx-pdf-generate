@@ -1,5 +1,11 @@
 name: CI
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/**
+
 jobs:
   lint:
     name: Lint

@@ -34,6 +34,15 @@ SOFTWARE.
 
 Changelog
 ---------
+0.0.2
++++++
+
+Released: **07-05-2023**
+
+* **07/05/2023** :
+    * Updated docs
+    * Bug fixes to improve plugin
+    * Updated GitHub Actions workflows and noxfile.py
 
 0.0.1
 +++++

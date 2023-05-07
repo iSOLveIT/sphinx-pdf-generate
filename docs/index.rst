@@ -8,6 +8,30 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. only:: html
+
+   .. image:: https://img.shields.io/pypi/dm/sphinx-pdf-generate.svg
+       :target: https://pypi.python.org/pypi/sphinx-pdf-generate
+       :alt: Downloads
+   .. image:: https://img.shields.io/pypi/l/sphinx-pdf-generate.svg
+       :target: https://pypi.python.org/pypi/sphinx-pdf-generate
+       :alt: License
+   .. image:: https://img.shields.io/pypi/pyversions/sphinx-pdf-generate.svg
+       :target: https://pypi.python.org/pypi/sphinx-pdf-generate
+       :alt: Supported versions
+   .. image:: https://github.com/iSOLveIT/sphnx-pdf-generate/actions/workflows/main.yaml/badge.svg
+       :target: https://github.com/iSOLveIT/sphnx-pdf-generate/actions/main.yaml
+       :alt: GitHub Docs CI Action status
+   .. image:: https://github.com/iSOLveIT/sphinx-pdf-generate/actions/workflows/ci.yaml/badge.svg
+       :target: https://github.com/iSOLveIT/sphinx-pdf-generate/actions
+       :alt: GitHub CI Action status
+   .. image:: https://img.shields.io/pypi/v/sphinx-pdf-generate.svg
+       :target: https://pypi.python.org/pypi/sphinx-pdf-generate
+       :alt: PyPI Package latest release
+   .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+       :target: https://github.com/psf/black
+       :alt: black code style
+
 .. _getting-started:
 
 .. image:: _static/SPDF-logo.png

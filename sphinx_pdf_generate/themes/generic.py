@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 
 def get_stylesheet() -> Optional[str]:
-    return None
+    return ""
 
 
 def modify_html(html: str, href: str) -> str:

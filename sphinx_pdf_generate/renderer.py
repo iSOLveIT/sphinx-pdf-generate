@@ -2,7 +2,7 @@ import logging
 import re
 import sys
 from importlib import import_module
-from importlib.util import spec_from_file_location, module_from_spec
+from importlib.util import module_from_spec, spec_from_file_location
 from pathlib import Path
 from typing import Any, Dict, Optional
 
@@ -135,7 +135,7 @@ class Renderer:
         except ImportError as e:
             self.logger.error(
                 f"Could not load theme handler {theme} because it is not a supported theme by default: {e}",
-                file=sys.stderr
+                file=sys.stderr,
             )
             return generic_theme
 

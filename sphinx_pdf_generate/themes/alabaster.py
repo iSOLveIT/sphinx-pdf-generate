@@ -2,7 +2,7 @@ from typing import Optional
 
 
 def get_stylesheet() -> Optional[str]:
-    return None
+    return ""
 
 
 def modify_html(html: str, href: str) -> str:
@@ -38,7 +38,7 @@ def modify_html(html: str, href: str) -> str:
     <path style="fill:#FFFFFF;" d="M36.266,44.168v3.172h4.211v1.121h-4.211V53h-1.668V42.924H40.9v1.244H36.266z"/> 
     </g></g> </svg>"""  # noqa: W291
 
-    a_tag = '<a style="margin:0;" href="{}" download title="Download PDF">{}</a>'.format(href, svg_tag)
+    a_tag = f'<a style="margin:0;" href="{href}" download title="Download PDF">{svg_tag}</a>'
 
     # insert into HTML
     insert_point = '<div class="document">'

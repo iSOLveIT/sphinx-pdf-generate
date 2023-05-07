@@ -33,7 +33,11 @@ def get_content(soup: BeautifulSoup) -> BeautifulSoup:
     :param soup: HTML content
     :return: Restructured HTML content
     """
+    # support for sphinx-material & sphinx-immaterial theme
     content = soup.find("article", attrs={"class": "md-content__inner"})
+    if content is None:
+        # support for all sphinx themes
+        content = soup.find(["div", "article"], attrs={"role": "main"})
     new_content = [content]
     soup.body.clear()
     soup.body.extend(new_content)

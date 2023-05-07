@@ -1,4 +1,4 @@
-from bs4 import NavigableString, Tag, BeautifulSoup, PageElement
+from bs4 import BeautifulSoup, NavigableString, PageElement, Tag
 
 from .options import Options
 
@@ -40,9 +40,9 @@ def _make_indexes(soup: BeautifulSoup, options: Options) -> None:
 
     def makelink(heading: PageElement) -> PageElement:
         li = soup.new_tag("li")
-        # if h.name == "h1":
-        #     return li
         ref = heading.get("id", "")
+        if ref == "":
+            ref = heading.parent.get("id")  # support for all sphinx themes
         prefix = heading.get("data-numbering", None)
         a = (
             soup.new_tag("a", href=f"#{ref}", attrs={"data-numbering": prefix})

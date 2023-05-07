@@ -9,7 +9,6 @@ from typing import Dict
 import colorama
 
 from .build import SPHINX_BUILD_OPTIONS, get_builder, show
-from .logging import get_logger
 from .pdf_generate import PdfGeneratePlugin
 from .version import __version__
 
@@ -101,7 +100,6 @@ def get_parser():
 def main() -> None:
     """Actual application logic."""
     colorama.init()
-    log = get_logger("sphinx-pdf-generate")
 
     parser = get_parser()
     args = parser.parse_args()

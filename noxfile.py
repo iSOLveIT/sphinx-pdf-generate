@@ -1,4 +1,3 @@
-import nox
 from nox_poetry import session
 
 

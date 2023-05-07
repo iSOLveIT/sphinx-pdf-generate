@@ -33,7 +33,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "research.md"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "sphinx_immaterial"
+html_theme = "sphinx-immaterial"
 html_theme_options = {
     "icon": {
         "repo": "fontawesome/brands/github",
@@ -82,7 +82,7 @@ rst_epilog = """
 .. |br| raw:: html 
 
    <br>
-   
+
 .. _github-issues: https://github.com/iSOLveIT/sphinx-pdf-generate/issues
 
 .. |github-issues| replace:: GitHub issues
@@ -111,7 +111,7 @@ rst_epilog = """
 
 .. |contributing| replace:: Contribution Guidelines
 
-"""
+"""  # noqa: W291
 
 # Sphinx-PDF-Generate configurations
 pdfgen_verbose = False

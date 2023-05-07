@@ -36,7 +36,7 @@
    :target: https://pypi.python.org/pypi/sphinx-pdf-generate
    :alt: Supported versions
 .. image:: https://github.com/iSOLveIT/sphinx-pdf-generate/actions/workflows/main.yaml/badge.svg
-   :target: https://github.com/iSOLveIT/sphnx-pdf-generate/actions/main.yaml
+   :target: https://github.com/iSOLveIT/sphinx-pdf-generate/actions/main.yaml
    :alt: GitHub Docs CI Action status
 .. image:: https://github.com/iSOLveIT/sphinx-pdf-generate/actions/workflows/ci.yaml/badge.svg
    :target: https://github.com/iSOLveIT/sphinx-pdf-generate/actions

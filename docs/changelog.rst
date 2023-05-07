@@ -1,4 +1,4 @@
-:pdf-filename: Changelog & License
+:pdf-filename: Changelog/License
 :pdf-title: Changelog & License
 :pdf-revision: 0.0.1
 :pdf-type: manual
@@ -34,6 +34,7 @@ SOFTWARE.
 
 Changelog
 ---------
+
 0.0.2
 +++++
 
@@ -43,6 +44,8 @@ Released: **07-05-2023**
     * Updated docs and plugin code
     * Bug fixes to improve plugin
     * Updated GitHub Actions workflows and noxfile.py
+
+:pagebreak:`True`
 
 0.0.1
 +++++

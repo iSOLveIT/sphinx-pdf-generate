@@ -3,7 +3,7 @@
 :pdf-revision: 0.0.1
 :pdf-type: manual
 
-.. Sphinx-Pdf-Generate documentation master file, created by
+.. Sphinx-Pdf-Generate documentation master file, created by Duodu Randy using
    sphinx-quickstart on Thu Mar 23 05:16:16 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.

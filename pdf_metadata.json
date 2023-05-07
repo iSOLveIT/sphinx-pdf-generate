@@ -1,0 +1,79 @@
+{
+    "GLOBAL_OPTIONS": {
+        "verbose": false,
+        "site_url": "https://isolveit.github.io/sphinx-pdf-generate/",
+        "debug": false,
+        "debug_target": null,
+        "author": "iSOLveIT",
+        "author_logo": "_static/SPDF-logo.png",
+        "copyright": "2023, iSOLveIT",
+        "disclaimer": "Disclaimer: Content can change at anytime and best to refer to website for latest information.",
+        "cover": true,
+        "cover_title": "Sphinx-Pdf-Generate",
+        "cover_subtitle": null,
+        "custom_template_path": "",
+        "theme_handler_path": null,
+        "plugin_handler_path": null,
+        "custom_css_path": "",
+        "toc": true,
+        "toc_numbering": true,
+        "toc_title": "Contents",
+        "toc_level": 6,
+        "cover_images": {},
+        "theme_name": "sphinx_immaterial",
+        "templates_path": [
+            "_templates"
+        ]
+    },
+    "LOCAL_OPTIONS": {
+        "changelog": {
+            "pdf-filename": "Changelog & License",
+            "pdf-title": "Changelog & License",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "cli": {
+            "pdf-title": "Command Line Interface",
+            "pdf-filename": "CLI Tool",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "contribute": {
+            "pdf-title": "Contributions",
+            "pdf-filename": "Contributors Guide",
+            "pdf-revision": "1.10",
+            "pdf-type": "manual"
+        },
+        "customisation": {
+            "pdf-filename": "Customisation",
+            "pdf-title": "Customize Plugin",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "index": {
+            "pdf-title": "Sphinx-PDF Generate",
+            "pdf-filename": "Introduction",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "install": {
+            "pdf-title": "Installation",
+            "pdf-filename": "Installation and Activation",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "options": {
+            "pdf-title": "Plugin Options",
+            "pdf-filename": "Options",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "quickstart": {
+            "pdf-title": "Quickstart",
+            "pdf-filename": "Quickstart",
+            "pdf-revision": "0.0.1",
+            "pdf-type": "manual"
+        },
+        "genindex": null
+    }
+}

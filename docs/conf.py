@@ -33,7 +33,7 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store", "research.md"]
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = "sphinx-immaterial"
+html_theme = "sphinx_immaterial"
 html_theme_options = {
     "icon": {
         "repo": "fontawesome/brands/github",

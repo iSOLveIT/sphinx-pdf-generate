@@ -48,15 +48,15 @@ jobs:
       run: |
         pip install -e .
     - name: Build and Commit
-      uses: sphinx-notes/pages@v2
+      uses: iSOLveIT/sphinx-pdf-generate-action@main
       with:
         documentation_path: ./docs
         requirements_path: ./docs/requirements.txt
-        target_branch: docs-build
+        target_branch: gh-pages
         sphinx_version: 6.0
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: docs-build
+        branch: gh-pages
         force: true

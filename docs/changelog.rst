@@ -44,6 +44,7 @@ Released: **06-05-2023**
     * Updated docs
     * Updated code for restructuring content tabs look on PDFs
     * Updated plugin's CSS
+    * Updated GitHub Actions workflows and noxfile.py
 * **03/05/2023** :
     * Added docs for options, changelog, and customisation
     * Added GH Action workflows

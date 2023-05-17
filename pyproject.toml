@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "sphinx-pdf-generate"
 
-# !! Don't miss updates in __init__.py, and changelog.rst!!!
-version = "0.0.2"
+# !! Don't miss updates in version.py, and changelog.rst!!!
+version = "0.0.3"
 
 description = "A Sphinx extension to generate individual PDF files for each documentation page."
 authors = ["Duodu Randy <duodurandy19@gmail.com>"]

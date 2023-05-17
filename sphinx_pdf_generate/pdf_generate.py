@@ -8,6 +8,7 @@ from docutils import nodes
 from sphinx.application import Sphinx
 from sphinx.util import docutils
 
+from sphinx_pdf_generate.build import show
 from sphinx_pdf_generate.logging import get_logger
 from sphinx_pdf_generate.options import Options
 from sphinx_pdf_generate.renderer import Renderer
@@ -108,6 +109,10 @@ def build_finished(app: Sphinx, exception: Exception):
     )
 
     local_options = app.env.sphinx_pdfgen_data
+    if "genindex" in local_options:
+        local_options["genindex"] = {"pdf-build": "False"}
+    if "search" in local_options:
+        local_options["search"] = {"pdf-build": "False"}
     pdf_metadata = {"GLOBAL_OPTIONS": global_options, "LOCAL_OPTIONS": local_options}
 
     path_to_save_metadata = Path(app.outdir).joinpath("pdf_metadata.json")
@@ -188,9 +193,10 @@ class PdfGeneratePlugin:
             file_name = pdf_meta.get("filename") or pdf_meta.get("title") or self._options.body_title or None
             if file_name is None:
                 file_name = str(pagename).split("/")[-1]
-                self._logger.error(
-                    f"You must set the filename metadata in {pagename}.rst so we can use in the PDF document. "
-                    f"The source filename is used as fallback."
+                show(
+                    context=f"You must set the filename metadata in {pagename}.rst so we can use in the PDF document. "
+                    f"The source filename is used as fallback.",
+                    error=True,
                 )
 
             # Generate a secure filename
@@ -199,7 +205,7 @@ class PdfGeneratePlugin:
             pdf_file = file_name + ".pdf"
 
             try:
-                self._logger.info(f"Converting {src_path} to {pdf_file}")
+                show(context=f"Converting {src_path} to {pdf_file}")
                 self.renderer.write_pdf(
                     html_content,
                     base_url,
@@ -213,7 +219,7 @@ class PdfGeneratePlugin:
                 self.num_errors += 1
                 raise PDFGenerateException(f"Error converting {src_path}. Reason: {e}")
         else:
-            self._logger.info(f"Skipped: PDF conversion for {src_path}")
+            show(context=f"Skipped: PDF conversion for {src_path}")
 
         end = timer()
         self.total_time += end - start

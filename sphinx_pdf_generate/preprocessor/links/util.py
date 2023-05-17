@@ -31,7 +31,7 @@ def rel_html_href(base_url: str, href: str, site_url: str, outdir: str):
     replace_build_dir = re.compile(pattern)
 
     internal = href.startswith("#")
-    web_url = re.search(r"^(https://|http://)", href)
+    web_url = re.search(r"^(https://|http://|mailto:|tel:)", href)
     if web_url or internal or not is_doc(href):
         return href
 

@@ -32,8 +32,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+:pagebreak:`True`
+
 Changelog
 ---------
+
+0.0.3
++++++
+
+Released: **17-05-2023**
+
+* **17/05/2023** :
+    * Updated docs
+    * Bug fixes to improve plugin
+    * Updated plugin log messages output
 
 0.0.2
 +++++
@@ -44,8 +56,6 @@ Released: **07-05-2023**
     * Updated docs and plugin code
     * Bug fixes to improve plugin
     * Updated GitHub Actions workflows and noxfile.py
-
-:pagebreak:`True`
 
 0.0.1
 +++++

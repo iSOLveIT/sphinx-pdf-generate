@@ -40,7 +40,7 @@ def show(*, context: Optional[str] = None, command: Union[list, tuple, None] = N
         _log(context, colour=Fore.CYAN)
     if command is not None:
         assert isinstance(command, (list, tuple))
-        _log("> " + " ".join(shlex.quote(s) for s in command), colour=Fore.BLUE)
+        _log("> " + " ".join(shlex.quote(s) for s in command), colour=Fore.MAGENTA)
     if error is not None:
         _log(context, colour=Fore.RED)
 

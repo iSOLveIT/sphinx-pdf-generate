@@ -74,6 +74,8 @@
             "pdf-revision": "0.0.1",
             "pdf-type": "manual"
         },
-        "genindex": null
+        "genindex": {
+            "pdf-build": "False"
+        }
     }
 }

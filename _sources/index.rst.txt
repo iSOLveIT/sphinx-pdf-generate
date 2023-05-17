@@ -51,6 +51,8 @@ The extension supports many advanced features such as table of contents, customi
 , support for CSS paged media module `CSS paged media module <https://developer.mozilla.org/en-US/docs/Web/CSS/@page>`_
 , and using Sphinx page metadata to generate cover page.
 
+If you find Sphinx-PDF Generate useful, please consider `starring  <https://github.com/iSOLveIT/sphinx-pdf-generate>`_ the project. Thank you!
+
 Requirements
 ------------
 

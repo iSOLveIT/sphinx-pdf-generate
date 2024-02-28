@@ -2,7 +2,7 @@
 name = "sphinx-pdf-generate"
 
 # !! Don't miss updates in version.py, and changelog.rst!!!
-version = "0.0.3"
+version = "0.0.4"
 
 description = "A Sphinx extension to generate individual PDF files for each documentation page."
 authors = ["Duodu Randy <duodurandy19@gmail.com>"]
@@ -39,7 +39,7 @@ sphinx = ">=5.0"
 colorama = ">=0.4.6"
 docutils = ">=0.15"
 pathlib = ">=1.0"
-weasyprint = ">=54.0"
+weasyprint = ">=60.0, <61.0"
 beautifulsoup4 = ">=4.6.3"
 jinja2 = ">=3.0.0"
 pypdf = ">=3.6.0"

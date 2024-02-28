@@ -87,15 +87,15 @@ rst_epilog = """
 
 .. |github-issues| replace:: GitHub issues
 
-.. _weasyprint-linux: https://weasyprint.readthedocs.io/en/latest/install.html#linux
+.. _weasyprint-linux: https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#linux
 
 .. |weasyprint-linux| replace:: Linux
 
-.. _weasyprint-macos: https://weasyprint.readthedocs.io/en/latest/install.html#macos
+.. _weasyprint-macos: https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#macos
 
 .. |weasyprint-macos| replace:: MacOS
 
-.. _weasyprint-windows: https://weasyprint.readthedocs.io/en/latest/install.html#windows
+.. _weasyprint-windows: https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#windows
 
 .. |weasyprint-windows| replace:: Windows
 

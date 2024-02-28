@@ -29,7 +29,7 @@
         "changelog": {
             "pdf-filename": "Changelog/License",
             "pdf-title": "Changelog & License",
-            "pdf-revision": "0.0.1",
+            "pdf-revision": "0.0.4",
             "pdf-type": "manual"
         },
         "cli": {

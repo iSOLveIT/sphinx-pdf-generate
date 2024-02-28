@@ -1,6 +1,6 @@
 :pdf-filename: Changelog/License
 :pdf-title: Changelog & License
-:pdf-revision: 0.0.1
+:pdf-revision: 0.0.4
 :pdf-type: manual
 
 
@@ -36,6 +36,14 @@ SOFTWARE.
 
 Changelog
 ---------
+
+0.0.4
++++++
+
+Released: **28-02-2024**
+
+* Fix `issue #5 <https://github.com/iSOLveIT/sphinx-pdf-generate/issues/5>`_: Set weasyprint version to ``>=60.0, <61.0`` as
+  versions >=61.0 has PDF build issues.
 
 0.0.3
 +++++

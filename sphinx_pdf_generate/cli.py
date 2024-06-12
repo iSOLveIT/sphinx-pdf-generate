@@ -155,6 +155,7 @@ def main() -> None:
             show(context=f"{pdf_generator.num_errors} conversion errors occurred (see above)", error=True)
     else:
         show(context="Sphinx build was unsuccessful. No PDF files were generated.", error=True)
+        raise SystemExit(builder)
 
 
 class PDFGenerateException(Exception):
